@@ -1,13 +1,9 @@
 import React from "react";
+import { Nav  } from "../components/nav/Nav";
 
 const DefaultLayout = () => {
   return (
-    <nav>
-      <ul>
-        <li>link1</li>
-        <li>link2</li>
-      </ul>
-    </nav>
+    <Nav />
   );
 };
 
