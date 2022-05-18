@@ -11,7 +11,7 @@ const InputComponent = ({type , id, placeholder, name, label}) => {
       <input 
         type={type}
         placeholder={placeholder}
-        className="input input-bordered w-full max-w-xs input-xs"
+        className="input input-bordered rounded w-full input-sm"
         name={name}
         id={id}
         />
