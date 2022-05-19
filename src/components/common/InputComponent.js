@@ -1,6 +1,7 @@
 import React from "react";
 
-const InputComponent = ({type , id, placeholder, name, label}) => {
+const InputComponent = ({type , id, placeholder, name, label, formik}) => {
+  
   return(
     <>
       <label className="label capitalize">
@@ -14,7 +15,13 @@ const InputComponent = ({type , id, placeholder, name, label}) => {
         className="input input-bordered rounded w-full input-sm"
         name={name}
         id={id}
+        onChange={formik.handleChange}
+        value={formik.values[name]}
         />
+        {
+         formik.touched[name] && !!formik.errors[name] &&
+          <span className="text-error">{formik.errors[name]}</span>
+        }
     </>
     )
 }
