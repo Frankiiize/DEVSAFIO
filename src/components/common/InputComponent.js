@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputComponent = ({type , id, placeholder, name, label, formik}) => {
+const InputComponent = ({type , id, placeholder, name, label, formik, onChange}) => {
   
   return(
     <>
@@ -15,7 +15,7 @@ const InputComponent = ({type , id, placeholder, name, label, formik}) => {
         className="input input-bordered rounded w-full input-sm"
         name={name}
         id={id}
-        onChange={formik.handleChange}
+        onChange={onChange}
         value={formik.values[name]}
         />
         {

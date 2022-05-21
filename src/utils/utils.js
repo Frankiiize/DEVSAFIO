@@ -19,3 +19,14 @@ export const validate = (getValidationSchema) => {
       }
   };
 };
+
+
+export const getValidationResult = (condition) => condition ? 'valid' : 'invalid';
+
+export const getInputValue = (target) => {
+    if (target.type === 'checkbox') return { [target.name]: target.checked }
+    return { [target.name]: target.value }
+}
+
+// CREATORS
+export const handlerInputChangeCreator = (formik) => ({ target }) =>{  formik.setValues({ ...formik.values, ...getInputValue(target) })};
