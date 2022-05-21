@@ -1,8 +1,8 @@
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import React from "react";
 import { InputComponent } from "../../components/common/InputComponent";
 import { registerSchema as schema } from "../../components/schemas/schema";
-import { validate } from "../../utils/utils";
+import { handlerInputChangeCreator, validate } from "../../utils/utils";
 const inputConfig = [
   {
     type:'text',
@@ -44,6 +44,7 @@ const inputConfig = [
     label:'confirma',
     autoComplete:'off',
   },
+ 
 ]
 
 const onSubmit = (values) => {
@@ -62,6 +63,9 @@ const RegisterPage = () => {
     onSubmit: onSubmit,
     validate: validate(schema)
   })
+
+  const handleTxtChange = handlerInputChangeCreator(formik);
+  console.log(formik.values)
   
   return(
     <>
@@ -81,6 +85,7 @@ const RegisterPage = () => {
                       key={`input-${index}${item.name}`}
                       label={item.label}
                       type={item.type}
+                      onChange={handleTxtChange}
                       id={item.id}
                       placeholder={item.placeholder}
                       name={item.name}
