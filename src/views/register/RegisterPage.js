@@ -1,48 +1,49 @@
 import { Formik, useFormik } from "formik";
 import React from "react";
 import { InputComponent } from "../../components/common/InputComponent";
+
 import { registerSchema as schema } from "../../components/schemas/schema";
 import { validate } from "../../utils/utils";
 const inputConfig = [
   {
-    type:'text',
-    id:'name',
-    placeholder:'tu nombre',
-    name:'name',
-    label:'nombre',
-    autoComplete:'given-name',
+    type: 'text',
+    id: 'name',
+    placeholder: 'tu nombre',
+    name: 'name',
+    label: 'nombre',
+    autoComplete: 'given-name',
   },
   {
-    type:'text',
-    id:'lastName',
-    placeholder:'tu apellido',
-    name:'lastName',
-    label:'Apellido',
-    autoComplete:'family-name',
+    type: 'text',
+    id: 'lastName',
+    placeholder: 'tu apellido',
+    name: 'lastName',
+    label: 'Apellido',
+    autoComplete: 'family-name',
   },
   {
-    type:'email',
-    id:'email',
-    placeholder:'email@gmail.com',
-    name:'email',
-    label:'email',
-    autoComplete:'email',
+    type: 'email',
+    id: 'email',
+    placeholder: 'email@gmail.com',
+    name: 'email',
+    label: 'email',
+    autoComplete: 'email',
   },
   {
-    type:'password',
-    id:'password',
-    placeholder:'contraseña',
-    name:'password',
-    label:'contraseña',
-    autoComplete:'password',
+    type: 'password',
+    id: 'password',
+    placeholder: 'contraseña',
+    name: 'password',
+    label: 'contraseña',
+    autoComplete: 'password',
   },
   {
-    type:'password',
-    id:'c_password',
-    placeholder:'confirma la contraseña',
-    name:'c_password',
-    label:'confirma',
-    autoComplete:'off',
+    type: 'password',
+    id: 'c_password',
+    placeholder: 'confirma la contraseña',
+    name: 'c_password',
+    label: 'confirma',
+    autoComplete: 'off',
   },
 ]
 
@@ -53,19 +54,19 @@ const onSubmit = (values) => {
 const RegisterPage = () => {
   const formik = useFormik({
     initialValues: {
-      name:'',
-      lastName:'',
-      email:'',
-      password:'',
-      c_password:'',
+      name: '',
+      lastName: '',
+      email: '',
+      password: '',
+      c_password: '',
     },
     onSubmit: onSubmit,
     validate: validate(schema)
   })
-  
-  return(
+
+  return (
     <>
-    <div className="bg-primary min-h-screen m-0  ">
+      <div className="bg-primary min-h-screen m-0  ">
         <div >
           <img className="w-1/4" src="https://devsafio.com/wp-content/uploads/2022/02/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png" alt='logo' />
         </div>
@@ -76,8 +77,8 @@ const RegisterPage = () => {
             <form className="p-1" onSubmit={formik.handleSubmit}>
               <div className="mt-2 mb-4">
                 {
-                  inputConfig.map((item,index) => (
-                    <InputComponent 
+                  inputConfig.map((item, index) => (
+                    <InputComponent
                       key={`input-${index}${item.name}`}
                       label={item.label}
                       type={item.type}
@@ -89,6 +90,8 @@ const RegisterPage = () => {
                   ))
                 }
               </div>
+
+
               <div >
                 <button type="submit" className="btn btn-wide">Button</button>
               </div>
@@ -96,7 +99,7 @@ const RegisterPage = () => {
           </div>
         </div>
 
-    </div>
+      </div>
     </>
   )
 };
