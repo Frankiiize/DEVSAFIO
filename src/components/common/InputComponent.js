@@ -1,11 +1,16 @@
 import React from "react";
 
 const InputComponent = ({ type, id, placeholder, name, label, formik, onChange, titleHead = { show: false, title: '' } }) => {
-  console.log(titleHead)
   return (
 
     <div>
-      {titleHead.show ? <h1>{titleHead.title}</h1> : null}
+      {
+      titleHead.show 
+        ? 
+          <h1>{titleHead.title}</h1> 
+        : 
+          null
+      }
       <div className={type === "checkbox" ? "display: flex mt-2" : undefined}>
         <label className="label capitalize ml-5" >
           <span className="label-text" >

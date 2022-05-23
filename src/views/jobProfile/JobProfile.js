@@ -152,6 +152,7 @@ const JobProfile = () => {
                                             key={`input-${index}${item.name}`}
                                             label={item.label}
                                             type={item.type}
+                                            titleHead={item.titleHead}
                                             id={item.id}
                                             placeholder={item.placeholder}
                                             name={item.name}
