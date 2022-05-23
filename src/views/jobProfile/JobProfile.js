@@ -2,9 +2,9 @@ import { Formik, useFormik } from "formik";
 import React from "react";
 import { InputComponent } from "../../components/common/InputComponent";
 import { registerSchema as schema } from "../../components/schemas/schema";
-import { validate } from "../../utils/utils";
+import { validate, handlerInputChangeCreator } from "../../utils/utils";
 
-import MultipleCheckbox from "../../components/common/MultipleCheckbox"
+
 
 
 const inputConfig = [
@@ -48,8 +48,52 @@ const inputConfig = [
         label: '¿a que empresa perteneces?',
         autoComplete: '',
     },
-]
-const inputDoubts = [
+    {
+        titleHead: {
+            show: true,
+            title: 'Cargo/área de preferencia que buscas contratar:'
+        },
+        type: 'checkbox',
+        id: 'DevFrontEnd',
+        name: 'DevFrontEnd',
+        label: 'Desarrollador Front End',
+    },
+    {
+        type: 'checkbox',
+        id: 'DevFullStackBackend',
+        name: 'DevFullStackBackend',
+        label: 'Desarrollador Full Stack',
+    },
+    {
+        type: 'checkbox',
+        id: 'DesignerUXUI',
+        name: 'DesignerUXUI',
+        label: 'Diseñador UX/UI',
+    },
+    {
+        type: 'checkbox',
+        id: 'AnalystQA',
+        name: 'AnalystQA',
+        label: 'Analista QA',
+    },
+    {
+        type: 'checkbox',
+        id: 'DevMobile',
+        name: 'DevMobile',
+        label: 'Desarrollador Mobile',
+    },
+    {
+        type: 'checkbox',
+        id: 'Data',
+        name: 'Data',
+        label: 'Datos',
+    },
+    {
+        type: 'checkbox',
+        id: 'Other',
+        name: 'Other',
+        label: 'Otra',
+    },
     {
         type: 'text',
         id: 'doubts',
@@ -58,7 +102,9 @@ const inputDoubts = [
         label: '¿dudas? dejalas aca',
         autoComplete: '',
     },
+
 ]
+
 
 
 const onSubmit = (values) => {
@@ -73,11 +119,20 @@ const JobProfile = () => {
             email: '',
             password: '',
             c_password: '',
+            DevFrontEnd: false,
+            DevFullStackBackend: false,
+            DesignerUXUI: false,
+            AnalystQA: false,
+            DevMobile: false,
+            Data: false,
+            Other: false,
+            doubts: '',
         },
         onSubmit: onSubmit,
         validate: validate(schema)
     })
-
+    const handleTxtChange = handlerInputChangeCreator(formik);
+    console.log(formik.values)
     return (
 
         <>
@@ -101,30 +156,12 @@ const JobProfile = () => {
                                             placeholder={item.placeholder}
                                             name={item.name}
                                             formik={formik}
+                                            onChange={handleTxtChange}
                                         />
                                     ))
                                 }
                             </div>
-                            <div>
 
-                                <MultipleCheckbox />
-
-                            </div>
-                            <div className="mt-2 mb-4">
-                                {
-                                    inputDoubts.map((item, index) => (
-                                        <InputComponent
-                                            key={`input-${index}${item.name}`}
-                                            label={item.label}
-                                            type={item.type}
-                                            id={item.id}
-                                            placeholder={item.placeholder}
-                                            name={item.name}
-                                            formik={formik}
-                                        />
-                                    ))
-                                }
-                            </div>
                             <div >
                                 <button type="submit" className="btn btn-wide color: bg-primary ">Enviar</button>
                             </div>
