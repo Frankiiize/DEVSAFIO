@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputComponent = ({ type, id, placeholder, name, label, formik, onChange, titleHead = { show: false, title: '' } }) => {
+const InputComponent = ({ type, id, placeholder, name, label, formik, onChange, titleHead = { show: false, title: undefined } }) => {
   return (
     <div>
       {

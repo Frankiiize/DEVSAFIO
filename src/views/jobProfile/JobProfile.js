@@ -142,7 +142,7 @@ const JobProfile = () => {
                 </div>
                 <div className="flex h-100">
                     <div className="w-full  rounded  mx-auto bg-white p-4 ">
-                        <h3 className="text-xl">buscas talento TI? En breve te contactaremos:</h3>
+                        <h3 className="text-lg">Buscas talento TI? En breve te contactaremos:</h3>
 
                         <form className="p-1" onSubmit={formik.handleSubmit}>
                             <div className="mt-2 mb-4">
