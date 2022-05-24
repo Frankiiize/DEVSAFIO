@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
 import React from "react";
-import { ButtomComponent } from "../../components/common/ButtomComponent";
+import { ButtonComponent } from "../../components/common/ButtonComponent";
 import { InputComponent } from "../../components/common/InputComponent";
+import { Nav } from '../../components/nav/Nav';
 
 import { registerSchema as schema } from "../../components/schemas/schema";
 import { handlerInputChangeCreator, validate } from "../../utils/utils";
@@ -72,9 +73,8 @@ const RegisterPage = () => {
   return (
     <>
       <div className="bg-primary min-h-screen flex flex-col">
-        <div >
-          <img style={{maxWidth: '250px'}} className="w-1/4" src="https://devsafio.com/wp-content/uploads/2022/02/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png" alt='logo' />
-        </div>
+        <Nav />
+     
         <section className=" flex grow items-center">
           <div className="container mb-16  mx-auto">
             <div className="w-full md:w-4/5 lg:w-2/4  rounded-t  mx-auto bg-white pt-5 md:pt-10 px-4 md:pb-0">
@@ -98,7 +98,8 @@ const RegisterPage = () => {
                       />
                     ))
                   }
-                    <ButtomComponent 
+                    <ButtonComponent
+                      style={"primary"} 
                       type={'submit'}
                     />
                   </>
