@@ -1,6 +1,5 @@
 import * as Yup from "yup";
-
-let registration = Yup.object().shape({
+let basicSchema = Yup.object().shape({
   name: Yup.string()
     .max(30,'No puedes superar 30 caracteres')
     .required('Nombre es Requerido'),
@@ -11,14 +10,44 @@ let registration = Yup.object().shape({
     .email('Email inválido')
     .max(50, 'El texto no debe superar los 50 carácteres')
     .required("Email es requerido"),
+  
+});
+let passwordSchema = basicSchema.shape({
   password: Yup.string()
     .matches(/([A-Za-z](?=.*[0-9])){6}\w+/g, 'La contraseña debe incluir 6 characteres y almenos un numero')
     .required("Contraseña es requeridad"),
   c_password: Yup.string()
     .oneOf([Yup.ref('password'), null], 'contraseñas no coinciden')
     .required('Confirma la contraseña'),
+});
+
+let jopSchema =basicSchema.shape({
+  number: Yup.string()
+    .required('debes de ingresar tu numero telefonico'),
+  empresa: Yup.string()
+    .required('danos el nombre de tu empresa'),
+  DevFrontEnd: Yup.boolean()
+    .oneOf([true], 'marca la casilla'),
+  DevFullStackBackend: Yup.boolean()
+  .oneOf([true], 'marca la casilla'),
+    DesignerUXUI: Yup.boolean()
+    .oneOf([true], 'marca la casilla'),
+  AnalystQA: Yup.boolean()
+  .oneOf([true], 'marca la casilla'),
+    DevMobile: Yup.boolean()
+    .oneOf([true], 'marca la casilla'),
+  Data: Yup.boolean()
+    .oneOf([true], 'marca la casilla'),
+  Other: Yup.boolean()
+    .oneOf([true], 'marca la casilla'),
+  doubts: Yup.string(),
+  
 })
 
 export const registerSchema = () => {
-  return registration;
+  return passwordSchema;
+}
+
+export const jopProfileShema = () => {
+  return jopSchema; 
 }

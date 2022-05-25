@@ -1,11 +1,8 @@
 import { Formik, useFormik } from "formik";
 import React from "react";
 import { InputComponent } from "../../components/common/InputComponent";
-import { registerSchema as schema } from "../../components/schemas/schema";
+  import { jopProfileShema as schema } from "../../components/schemas/schema";
 import { validate, handlerInputChangeCreator } from "../../utils/utils";
-
-
-
 
 const inputConfig = [
     {
@@ -102,10 +99,7 @@ const inputConfig = [
         label: '¿dudas? dejalas aca',
         autoComplete: '',
     },
-
 ]
-
-
 
 const onSubmit = (values) => {
     console.log(values);
@@ -117,8 +111,8 @@ const JobProfile = () => {
             name: '',
             lastName: '',
             email: '',
-            password: '',
-            c_password: '',
+            number:'',
+            empresa:'',
             DevFrontEnd: false,
             DevFullStackBackend: false,
             DesignerUXUI: false,
