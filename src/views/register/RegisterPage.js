@@ -3,7 +3,6 @@ import React from "react";
 import { ButtonComponent } from "../../components/common/ButtonComponent";
 import { InputComponent } from "../../components/common/InputComponent";
 import { Nav } from '../../components/nav/Nav';
-
 import { registerSchema as schema } from "../../components/schemas/schema";
 import { handlerInputChangeCreator, validate } from "../../utils/utils";
 const inputConfig = [
@@ -50,6 +49,7 @@ const inputConfig = [
 
 ]
 
+
 const onSubmit = (values) => {
   console.log(values);
 }
@@ -62,6 +62,7 @@ const RegisterPage = () => {
       email: '',
       password: '',
       c_password: '',
+      select:'',
     },
     onSubmit: onSubmit,
     validate: validate(schema)
@@ -74,7 +75,6 @@ const RegisterPage = () => {
     <>
       <div className="bg-primary min-h-screen flex flex-col">
         <Nav />
-     
         <section className=" flex grow items-center">
           <div className="container mb-16  mx-auto">
             <div className="w-full md:w-4/5 lg:w-2/4  rounded-t  mx-auto bg-white pt-5 md:pt-10 px-4 md:pb-0">
@@ -82,6 +82,7 @@ const RegisterPage = () => {
             </div>
             <div className="w-full md:w-4/5 lg:w-2/4  rounded-b  mx-auto bg-white pt-0 px-4 md:pb-7 ">
               <form className="p-1" onSubmit={formik.handleSubmit}>
+            
                 <div className="p-4">
                   <>
                   {
@@ -103,6 +104,7 @@ const RegisterPage = () => {
                       type={'submit'}
                     />
                   </>
+              
                 </div>
               </form>
             </div>
