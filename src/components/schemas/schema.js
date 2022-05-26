@@ -12,7 +12,7 @@ let basicSchema = Yup.object().shape({
     .required("Email es requerido"),
   
 });
-let passwordSchema = basicSchema.shape({
+let register = basicSchema.shape({
   password: Yup.string()
     .matches(/([A-Za-z](?=.*[0-9])){6}\w+/g, 'La contraseña debe incluir 6 characteres y almenos un numero')
     .required("Contraseña es requeridad"),
@@ -45,7 +45,7 @@ let jopSchema =basicSchema.shape({
 })
 
 export const registerSchema = () => {
-  return passwordSchema;
+  return register;
 }
 
 export const jopProfileShema = () => {

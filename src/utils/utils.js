@@ -25,7 +25,7 @@ export const getValidationResult = (condition) => condition ? 'valid' : 'invalid
 
 export const getInputValue = (target) => {
     if (target.type === 'checkbox') return { [target.name]: target.checked }
-    if (target.type === 'radio') return { [target.name]: target.checked }
+    if (target.type === 'radio') return { [target.name]: target.value }
     return { [target.name]: target.value }
 }
 
