@@ -18,8 +18,7 @@
 
 <!-- Go over all the following points, and replace `[ ]` with `[x]` in all the boxes that apply -->
 <!-- If you're unsure about any of these, don't hesitate to ask. We're here to help -->
-- [ ] I follow as well as possible the guidelines indicated in [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
-- [ ] I have squashed intermediate commits and rebase with upstream branch
+- [ ] I follow as well as possible the guidelines indicated in [Conventional Commits](https://www.conventionalcommits.org/)
 - [ ] I have performed a self-review of my own code
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] I have updated the CHANGELOG
