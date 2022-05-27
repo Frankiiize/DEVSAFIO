@@ -10,7 +10,7 @@ const DefaultLayout = React.lazy(() => import('./../../layout/DefaultLayout'));
 const IndexPage = () => {
     return(
        
-       <body className="min-h-screen bg-primary"> 
+       <div className="min-h-screen bg-primary"> 
         <div>
         <DefaultLayout />
         </div>
@@ -37,7 +37,7 @@ const IndexPage = () => {
          <img src={require("../../images/referencia.png")}  /> 
          </div>
         </div>
-       </body>
+       </div>
         
     )
 };
