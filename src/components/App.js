@@ -4,11 +4,10 @@ import { ProtectedRoute } from '../routers/ProtectedRoute';
 import { Suspense } from 'react';
 import { Dashboard } from '../views/Dashboard';
 
-
-
-const DefaultLayout = React.lazy(() => import('../layout/DefaultLayout'));
+//const DefaultLayout = React.lazy(() => import('../layout/DefaultLayout'));
 const RegisterPage = React.lazy(() => import('../views/register/RegisterPage'));
 const IndexPage = React.lazy(() => import('../views/Index/IndexPage'));
+
 
 function App() {
   return (
@@ -18,15 +17,15 @@ function App() {
         <Route path='/login' element={<h1>Login</h1>} />
         <Route path='/register' element={<RegisterPage />} />
         <Route exact path='/dashboard' element={<ProtectedRoute />}>
-          <Route 
-            exact 
+          <Route
+            exact
             path='/dashboard'
-            name='Dashboard' 
+            name='Dashboard'
             element={<Dashboard />} />
         </Route>
       </Routes>
     </Suspense>
-    
+
   );
 }
 

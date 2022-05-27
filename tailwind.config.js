@@ -1,12 +1,9 @@
 module.exports = {
-
-
-
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-   
+
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
@@ -17,30 +14,27 @@ module.exports = {
     themes: [
       {
         mytheme: {
-        
+
           "primary": "#4060ab",
-                  
-          "secondary": "#F000B8",
-                  
-          "accent": "#37CDBE",
-                  
+
+          "secondary": "#646FD4",
+
+          "accent": "#FFD24C",
+
           "neutral": "#3D4451",
-                  
+
           "base-100": "#FFFFFF",
-                  
+
           "info": "#3ABFF8",
-                  
+
           "success": "#36D399",
-                  
+
           "warning": "#FBBD23",
-                  
+
           "error": "#F87272",
-                  },
-                },
-              ],
-            },
-  plugins:[require("daisyui")],
-
-
-  
+        },
+      },
+    ],
+  },
+  plugins: [require("daisyui")],
 }
