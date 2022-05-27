@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+const ACEPTED_PHOTOS = ['image/jpg','image/jpeg','image/png'];
 let basicSchema = Yup.object().shape({
   name: Yup.string()
     .max(30,'No puedes superar 30 caracteres')
@@ -21,33 +22,7 @@ let register = basicSchema.shape({
     .required('Confirma la contraseña'),
 });
 
-let jopSchema =basicSchema.shape({
-  number: Yup.string()
-    .required('debes de ingresar tu numero telefonico'),
-  empresa: Yup.string()
-    .required('danos el nombre de tu empresa'),
-  DevFrontEnd: Yup.boolean()
-    .oneOf([true], 'marca la casilla'),
-  DevFullStackBackend: Yup.boolean()
-  .oneOf([true], 'marca la casilla'),
-    DesignerUXUI: Yup.boolean()
-    .oneOf([true], 'marca la casilla'),
-  AnalystQA: Yup.boolean()
-  .oneOf([true], 'marca la casilla'),
-    DevMobile: Yup.boolean()
-    .oneOf([true], 'marca la casilla'),
-  Data: Yup.boolean()
-    .oneOf([true], 'marca la casilla'),
-  Other: Yup.boolean()
-    .oneOf([true], 'marca la casilla'),
-  doubts: Yup.string(),
-  
-})
 
 export const registerSchema = () => {
   return register;
-}
-
-export const jopProfileShema = () => {
-  return jopSchema; 
 }
