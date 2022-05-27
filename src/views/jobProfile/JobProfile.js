@@ -1,7 +1,7 @@
 import { Formik, useFormik } from "formik";
-import React from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import { InputComponent } from "../../components/common/InputComponent";
-  import { jopProfileShema as schema } from "../../components/schemas/schema";
+import { jopProfileShema as schema } from "../../components/schemas/schema";
 import { validate, handlerInputChangeCreator } from "../../utils/utils";
 
 const inputConfig = [
@@ -39,9 +39,9 @@ const inputConfig = [
     },
     {
         type: 'text',
-        id: 'empresa',
+        id: 'business',
         placeholder: 'nombre empresa',
-        name: 'empresa',
+        name: 'business',
         label: '¿a que empresa perteneces?',
         autoComplete: '',
     },
@@ -101,18 +101,27 @@ const inputConfig = [
     },
 ]
 
-const onSubmit = (values) => {
-    console.log(values);
-}
+
 
 const JobProfile = () => {
+
+    const [check, setCheck] = useState(false);
+
+    const onSubmit = (values) => {
+        if (formik.values.DevFrontEnd === true || formik.values.DevFullStackBackend === true || formik.values.DesignerUXUI === true || formik.values.AnalystQA === true || formik.values.DevMobile === true || formik.values.Data === true || formik.values.Other === true) {
+            console.log(values);
+        } else {
+            setCheck(true)
+        }
+    }
+
     const formik = useFormik({
         initialValues: {
             name: '',
             lastName: '',
             email: '',
-            number:'',
-            empresa:'',
+            number: '',
+            business: '',
             DevFrontEnd: false,
             DevFullStackBackend: false,
             DesignerUXUI: false,
@@ -126,11 +135,13 @@ const JobProfile = () => {
         validate: validate(schema)
     })
     const handleTxtChange = handlerInputChangeCreator(formik);
-    console.log(formik.values)
+    // console.log(formik)
+
+
     return (
 
         <>
-            <div className="bg-primary min-h-screen m-0  ">
+            <div className="bg-primary min-h-screen m-0 grid justify-items-center ">
                 <div >
                     <img className="w-1/4" src="https://devsafio.com/wp-content/uploads/2022/02/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png" alt='logo' />
                 </div>
@@ -140,6 +151,7 @@ const JobProfile = () => {
 
                         <form className="p-1" onSubmit={formik.handleSubmit}>
                             <div className="mt-2 mb-4">
+
                                 {
                                     inputConfig.map((item, index) => (
                                         <InputComponent
@@ -155,6 +167,9 @@ const JobProfile = () => {
                                         />
                                     ))
                                 }
+                                {/* {!!check && <span className="text-error">Selecciona Algun check</span>} */}
+                                {check === true ? <span className="text-error">Seleccionar al menos una casilla</span> : ''}
+
                             </div>
 
                             <div >
