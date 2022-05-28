@@ -4,7 +4,7 @@ import { InputComponent } from "../../components/common/InputComponent";
 import { registerSchema as schema } from "../../components/schemas/schema";
 import { validate } from "../../utils/utils";
 
-import MultipleCheckbox from "../../components/common/MultipleCheckbox"
+// import MultipleCheckbox from "../../components/common/MultipleCheckbox"
 
 
 const inputConfig = [
@@ -106,8 +106,8 @@ const JobProfile = () => {
                                 }
                             </div>
                             <div>
-
-                                <MultipleCheckbox />
+                                {/* 
+                                <MultipleCheckbox /> */}
 
                             </div>
                             <div className="mt-2 mb-4">
