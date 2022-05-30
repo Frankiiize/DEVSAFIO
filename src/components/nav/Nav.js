@@ -7,12 +7,14 @@ import { Link } from "react-router-dom";
 
 
 
+
 const navigation = [
   { name: 'Sign up', href: '/register', current: false },
-  { name: <React.Fragment>{'Login'} <AiOutlineLogin/></React.Fragment>, href: '#', current: false,}
-  
-  
+  { name: <React.Fragment>{'Login'} <AiOutlineLogin/></React.Fragment>, href: '#', current: false,},  
 ]
+
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -37,16 +39,19 @@ const Nav = () => {
                 </Disclosure.Button>
               </div>
               <div className="flex-shrink-0 flex items-start">
+                
+                <a href="/" className="hover:bg-gray-700 px-3 py-2 rounded-md">
                   <img
                     className="block lg:hidden h-8 w-auto"
-                    src="https://devsafio.com/wp-content/uploads/2022/02/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png"
+                    src={require("./../../images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png")}
                     alt="Workflow"
                   />
                   <img
                     className="hidden lg:block h-8 w-auto"
-                    src="https://devsafio.com/wp-content/uploads/2022/02/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png"
+                    src={require("./../../images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png")}
                     alt="Workflow"
                   />
+                </a>
                 </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-end">
                 
