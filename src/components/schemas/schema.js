@@ -42,7 +42,7 @@ let jopSchema = basicSchema.shape({
   // Other: Yup.boolean()
   //   .oneOf([false], 'marca la casilla'),
   // doubts: Yup.string(),
-  // acepted: Yup.bool().isTrue(true)
+  // acepted: Yup.bool().oneOf([false], 'marca la casilla'),
 
 })
 

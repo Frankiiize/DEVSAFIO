@@ -1,8 +1,9 @@
 import { Formik, useFormik } from "formik";
-import React, { useState, useSyncExternalStore } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import { InputComponent } from "../../components/common/InputComponent";
 import { jopProfileShema as schema } from "../../components/schemas/schema";
 import { validate, handlerInputChangeCreator } from "../../utils/utils";
+import { Nav } from "../../components/nav/Nav";
 
 const inputConfig = [
     {
@@ -54,42 +55,56 @@ const inputConfig = [
         id: 'DevFrontEnd',
         name: 'DevFrontEnd',
         label: 'Desarrollador Front End',
+
+        // checkced: 'accepted'
     },
     {
         type: 'checkbox',
         id: 'DevFullStackBackend',
         name: 'DevFullStackBackend',
         label: 'Desarrollador Full Stack',
+
+        // checkced: 'accepted'
     },
     {
         type: 'checkbox',
         id: 'DesignerUXUI',
         name: 'DesignerUXUI',
         label: 'Diseñador UX/UI',
+
+        // checkced: 'accepted'
     },
     {
         type: 'checkbox',
         id: 'AnalystQA',
         name: 'AnalystQA',
         label: 'Analista QA',
+
+        // checkced: 'accepted'
     },
     {
         type: 'checkbox',
         id: 'DevMobile',
         name: 'DevMobile',
         label: 'Desarrollador Mobile',
+
+        // checkced: 'accepted'
     },
     {
         type: 'checkbox',
         id: 'Data',
         name: 'Data',
         label: 'Datos',
+
+        // checkced: 'accepted'
     },
     {
         type: 'checkbox',
         id: 'Other',
         name: 'Other',
         label: 'Otra',
+
+        // checkced: 'accepted'
     },
     {
         type: 'text',
@@ -129,6 +144,7 @@ const JobProfile = () => {
             DevMobile: false,
             Data: false,
             Other: false,
+            accepted: false,
             doubts: '',
         },
         onSubmit: onSubmit,
@@ -136,49 +152,64 @@ const JobProfile = () => {
     })
     const handleTxtChange = handlerInputChangeCreator(formik);
     // console.log(formik)
+    useEffect(() => {
+        setCheck(false)
+    }, [
+        formik.values.DevFrontEnd,
+        formik.values.DevFullStackBackend,
+        formik.values.DesignerUXUI,
+        formik.values.AnalystQA,
+        formik.values.DevMobile,
+        formik.values.Data,
+        formik.values.Other,
+    ])
 
 
     return (
 
         <>
-            <div className="bg-primary min-h-screen m-0 grid justify-items-center ">
-                <div >
-                    <img className="w-1/4" src="https://devsafio.com/wp-content/uploads/2022/02/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png" alt='logo' />
-                </div>
-                <div className="flex h-100">
-                    <div className="w-full  rounded  mx-auto bg-white p-4 ">
-                        <h3 className="text-lg">Buscas talento TI? En breve te contactaremos:</h3>
+            <div className="bg-primary min-h-screen flex flex-col">
+                <Nav />
+                <section className=" flex grow items-center">
+                    <div className="container mb-16  mx-auto mt-4">
+                        <div className="w-full md:w-4/5 lg:w-2/4  rounded-t  mx-auto bg-white pt-5 md:pt-10 px-4 md:pb-0">
+                            <h3 className="text-3xl px-4">Buscas talento TI? En breve te contactaremos:</h3>
+                        </div>
+                        <div className="w-full md:w-4/5 lg:w-2/4  rounded-b  mx-auto bg-white pt-0 px-4 md:pb-7 ">
+                            <form className="p-1" onSubmit={formik.handleSubmit}>
 
-                        <form className="p-1" onSubmit={formik.handleSubmit}>
-                            <div className="mt-2 mb-4">
+                                <div className="p-4">
 
-                                {
-                                    inputConfig.map((item, index) => (
-                                        <InputComponent
-                                            key={`input-${index}${item.name}`}
-                                            label={item.label}
-                                            type={item.type}
-                                            titleHead={item.titleHead}
-                                            id={item.id}
-                                            placeholder={item.placeholder}
-                                            name={item.name}
-                                            formik={formik}
-                                            onChange={handleTxtChange}
-                                        />
-                                    ))
-                                }
-                                {/* {!!check && <span className="text-error">Selecciona Algun check</span>} */}
-                                {check === true ? <span className="text-error">Seleccionar al menos una casilla</span> : ''}
 
-                            </div>
+                                    {
+                                        inputConfig.map((item, index) => (
+                                            <InputComponent
+                                                key={`input-${index}${item.name}`}
+                                                label={item.label}
+                                                type={item.type}
+                                                titleHead={item.titleHead}
+                                                id={item.id}
+                                                placeholder={item.placeholder}
+                                                name={item.name}
+                                                formik={formik}
+                                                onChange={handleTxtChange}
+                                            // checkced={formik.values.accepted}
 
-                            <div >
-                                <button type="submit" className="btn btn-wide color: bg-primary ">Enviar</button>
-                            </div>
-                        </form>
+                                            />
+                                        ))
+                                    }
+                                    {/* {!!check && <span className="text-error">Selecciona Algun check</span>} */}
+                                    {check === true ? <span className="text-error">Seleccionar al menos una casilla</span> : ''}
+                                    {/* {formik.errors.accepted && formik.touched.name ? <span style={{ color: 'red' }} > {formik.errors.accepted}</span> : ''} */}
+                                </div>
+
+                                <div >
+                                    <button type="submit" className="btn btn-wide color: bg-primary ">Enviar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-
+                </section>
             </div>
         </>
     )
