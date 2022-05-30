@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 import { Dashboard } from '../views/Dashboard';
 
 //const DefaultLayout = React.lazy(() => import('../layout/DefaultLayout'));
-const RegisterPage = React.lazy(() => import('../views/register/RegisterPage'));
+// const RegisterPage = React.lazy(() => import('../views/register/RegisterPage'));
 const JobProfile = React.lazy(() => import('../views/jobProfile/JobProfile'));
 const Postulate = React.lazy(() => import('../views/postulate/Postulate'));
 
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<h1>Index</h1>} />
         <Route path='/login' element={<h1>Login</h1>} />
-        <Route path='/register' element={<RegisterPage />} />
+        {/* <Route path='/register' element={<RegisterPage />} /> */}
         <Route path='/jobProfile' element={<JobProfile />} />
         <Route path='/postulate' element={<Postulate />} />
 

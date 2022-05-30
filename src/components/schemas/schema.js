@@ -1,3 +1,4 @@
+import { yupToFormErrors } from "formik";
 import * as Yup from "yup";
 let basicSchema = Yup.object().shape({
   name: Yup.string()
@@ -41,6 +42,7 @@ let jopSchema = basicSchema.shape({
   // Other: Yup.boolean()
   //   .oneOf([false], 'marca la casilla'),
   // doubts: Yup.string(),
+  // acepted: Yup.bool().isTrue(true)
 
 })
 
