@@ -44,6 +44,15 @@ let jopSchema = basicSchema.shape({
   // doubts: Yup.string(),
 
 })
+let login = basicSchema.shape({
+  email: Yup.string()
+    .email('Email inválido')
+    .max(50, 'El texto no debe superar los 50 carácteres')
+    .required("Email es requerido"),
+  password: Yup.string()
+    .matches(/([A-Za-z](?=.*[0-9])){6}\w+/g, 'La contraseña debe incluir 6 characteres y almenos un numero')
+    .required("Contraseña es requeridad"),
+});
 
 export const registerSchema = () => {
   return register;
@@ -51,4 +60,7 @@ export const registerSchema = () => {
 
 export const jopProfileShema = () => {
   return jopSchema;
+}
+export const loginSchema = () => {
+  return login;
 }
