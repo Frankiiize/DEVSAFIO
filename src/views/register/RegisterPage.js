@@ -75,7 +75,7 @@ const RegisterPage = () => {
     <>
       <div className="bg-primary min-h-screen flex flex-col">
         <Nav />
-        <section className=" flex grow items-center animate__animated animate__fadeInDown">
+        <section className=" flex grow items-center animate__animated animate__fadeIn">
           <div className="container mb-16  mx-auto mt-4">
             <div className="w-full md:w-4/5 lg:w-2/4  rounded-t  mx-auto bg-white pt-5 md:pt-10 px-4 md:pb-0">
               <h3 className="text-3xl px-4">Registrate</h3>
