@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const navigation = [
   { name: 'Sign up', href: '/register', current: false },
-  { name: <React.Fragment>{'Login'} <AiOutlineLogin/></React.Fragment>, href: '#', current: false,},  
+  { name: <React.Fragment>{'Login'} <AiOutlineLogin/></React.Fragment>, href: '/login', current: false,},  
 ]
 
 
