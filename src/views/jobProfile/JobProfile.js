@@ -4,6 +4,7 @@ import { InputComponent } from "../../components/common/InputComponent";
 import { jopProfileShema as schema } from "../../components/schemas/schema";
 import { validate, handlerInputChangeCreator } from "../../utils/utils";
 import { Nav } from "../../components/nav/Nav";
+import { ButtonComponent } from "../../components/common/ButtonComponent";
 
 const inputConfig = [
     {
@@ -203,9 +204,14 @@ const JobProfile = () => {
                                     {/* {formik.errors.accepted && formik.touched.name ? <span style={{ color: 'red' }} > {formik.errors.accepted}</span> : ''} */}
                                 </div>
 
-                                <div >
+                                {/* <div >
                                     <button type="submit" className="btn btn-wide color: bg-primary ">Enviar</button>
-                                </div>
+                                </div> */}
+                                <ButtonComponent
+                                    style={'primary'}
+                                    type={'submit'}>
+
+                                </ButtonComponent>
                             </form>
                         </div>
                     </div>
