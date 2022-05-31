@@ -25,24 +25,11 @@ let passwordSchema = basicSchema.shape({
 let jopSchema = basicSchema.shape({
   number: Yup.string()
     .required('debes de ingresar tu numero telefonico'),
-  business: Yup.string()
-    .required('danos el nombre de tu empresa'),
-  // DevFrontEnd: Yup.boolean()
-  //   .oneOf([false], 'marca la casilla'),
-  // DevFullStackBackend: Yup.boolean()
-  //   .oneOf([false], 'marca la casilla'),
-  // DesignerUXUI: Yup.boolean()
-  //   .oneOf([false], 'marca la casilla'),
-  // AnalystQA: Yup.boolean()
-  //   .oneOf([false], 'marca la casilla'),
-  // DevMobile: Yup.boolean()
-  //   .oneOf([false], 'marca la casilla'),
-  // Data: Yup.boolean()
-  //   .oneOf([false], 'marca la casilla'),
-  // Other: Yup.boolean()
-  //   .oneOf([false], 'marca la casilla'),
-  // doubts: Yup.string(),
-  // acepted: Yup.bool().oneOf([false], 'marca la casilla'),
+  city: Yup.string()
+    .required('ingresa tu ciudad'),
+  country: Yup.string()
+    .required('ingresa tu pais'),
+
 
 })
 

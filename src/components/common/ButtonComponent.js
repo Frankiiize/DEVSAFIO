@@ -6,7 +6,7 @@ const secondaryClass =
   "btn w-full md:w-1/2 lg:w-2/5 color: bg-white text-primary border-primary hover:bg-secondary hover:text-white hover:border-none hover:drop-shadow-xl";
 const defaultBtnClass = "btn w-full md:w-1/2 lg:w-2/5 ";
 
-const ButtonComponent = ({ type, style }) => {
+const ButtonComponent = ({ type, style, label = 'enviar' }) => {
   return (
     <div className="md:flex md:justify-end py-5">
       <button
@@ -15,11 +15,11 @@ const ButtonComponent = ({ type, style }) => {
           style === "primary"
             ? primaryClass
             : style === "secondary"
-            ? secondaryClass
-            : defaultBtnClass
+              ? secondaryClass
+              : defaultBtnClass
         }
       >
-        <span className="tracking-widest text-lg">Enviar</span>
+        <span className="tracking-widest text-lg">{label}</span>
       </button>
     </div>
   );

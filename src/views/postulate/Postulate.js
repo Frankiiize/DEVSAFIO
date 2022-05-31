@@ -6,6 +6,7 @@ import { validate, handlerInputChangeCreator } from "../../utils/utils";
 import { Nav } from "../../components/nav/Nav";
 import { ButtonComponent } from "../../components/common/ButtonComponent";
 
+
 const inputConfig = [
     {
         type: 'text',
@@ -41,21 +42,37 @@ const inputConfig = [
     },
     {
         type: 'text',
-        id: 'business',
-        placeholder: 'nombre empresa',
-        name: 'business',
-        label: '¿a que empresa perteneces?',
+        id: 'city',
+        placeholder: 'donde vives',
+        name: 'city',
+        label: '¿donde vives?',
+        autoComplete: '',
+    },
+    {
+        type: 'text',
+        id: 'country',
+        placeholder: 'pais',
+        name: 'country',
+        label: '¿pais de residencia?',
         autoComplete: '',
     },
     {
         titleHead: {
             show: true,
-            title: 'Cargo/área de preferencia que buscas contratar:'
+            title: 'Cargo al que optas:'
         },
         type: 'checkbox',
         id: 'DevFrontEnd',
         name: 'DevFrontEnd',
         label: 'Desarrollador Front End',
+
+        // checkced: 'accepted'
+    },
+    {
+        type: 'checkbox',
+        id: 'DevBackend',
+        name: 'DevBackend',
+        label: 'Desarrollador Backend',
 
         // checkced: 'accepted'
     },
@@ -71,7 +88,15 @@ const inputConfig = [
         type: 'checkbox',
         id: 'DesignerUXUI',
         name: 'DesignerUXUI',
-        label: 'Diseñador UX/UI',
+        label: 'Diseñador UX/UI Research',
+
+        // checkced: 'accepted'
+    },
+    {
+        type: 'checkbox',
+        id: 'DesignerUI',
+        name: 'DesignerUI',
+        label: 'Diseñador UI',
 
         // checkced: 'accepted'
     },
@@ -79,7 +104,7 @@ const inputConfig = [
         type: 'checkbox',
         id: 'AnalystQA',
         name: 'AnalystQA',
-        label: 'Analista QA',
+        label: 'QA Tester',
 
         // checkced: 'accepted'
     },
@@ -93,9 +118,41 @@ const inputConfig = [
     },
     {
         type: 'checkbox',
-        id: 'Data',
-        name: 'Data',
-        label: 'Datos',
+        id: 'DataAnalist',
+        name: 'DataAnalist',
+        label: 'Administrador de Base de Datos',
+
+        // checkced: 'accepted'
+    },
+    {
+        type: 'checkbox',
+        id: 'DataScientist',
+        name: 'DataScientist',
+        label: 'Data Scientist o Especialista Machine Learning',
+
+        // checkced: 'accepted'
+    },
+    {
+        type: 'checkbox',
+        id: 'ProductManager',
+        name: 'ProductManager',
+        label: 'Product Manager',
+
+        // checkced: 'accepted'
+    },
+    {
+        type: 'checkbox',
+        id: 'DevOps',
+        name: 'DevOps',
+        label: 'DevOps o SRE',
+
+        // checkced: 'accepted'
+    },
+    {
+        type: 'checkbox',
+        id: 'EnginerData',
+        name: 'EnginerData',
+        label: 'Ingeniero de Datos',
 
         // checkced: 'accepted'
     },
@@ -107,14 +164,7 @@ const inputConfig = [
 
         // checkced: 'accepted'
     },
-    {
-        type: 'text',
-        id: 'doubts',
-        placeholder: 'dudas...',
-        name: 'doubts',
-        label: '¿dudas? dejalas aca',
-        autoComplete: '',
-    },
+
 ]
 
 
@@ -124,7 +174,10 @@ const JobProfile = () => {
     const [check, setCheck] = useState(false);
 
     const onSubmit = (values) => {
-        if (formik.values.DevFrontEnd === true || formik.values.DevFullStackBackend === true || formik.values.DesignerUXUI === true || formik.values.AnalystQA === true || formik.values.DevMobile === true || formik.values.Data === true || formik.values.Other === true) {
+
+        if (formik.values.DevFrontEnd === true || formik.values.DevBackend === true || formik.values.DevFullStackBackend === true || formik.values.DesignerUXUI === true || formik.values.DesignerUI === true
+            || formik.values.AnalystQA === true || formik.values.DevMobile === true || formik.values.Data === true || formik.values.DataScientist === true || formik.values.ProductManager === true
+            || formik.values.DevOps === true || formik.values.EnginerData === true || formik.values.Other === true) {
             console.log(values);
         } else {
             setCheck(true)
@@ -137,16 +190,23 @@ const JobProfile = () => {
             lastName: '',
             email: '',
             number: '',
-            business: '',
+            city: '',
+            country: '',
             DevFrontEnd: false,
+            DevBackend: false,
             DevFullStackBackend: false,
             DesignerUXUI: false,
+            DesignerUI: false,
             AnalystQA: false,
             DevMobile: false,
-            Data: false,
+            DataAnalist: false,
+            DataScientist: false,
+            ProductManager: false,
+            DevOps: false,
+            EnginerData: false,
             Other: false,
-            accepted: false,
-            doubts: '',
+
+
         },
         onSubmit: onSubmit,
         validate: validate(schema)
@@ -157,11 +217,18 @@ const JobProfile = () => {
         setCheck(false)
     }, [
         formik.values.DevFrontEnd,
+        formik.values.DevBackend,
         formik.values.DevFullStackBackend,
         formik.values.DesignerUXUI,
+        formik.values.DesignerUI,
         formik.values.AnalystQA,
         formik.values.DevMobile,
         formik.values.Data,
+        formik.values.DataScientist,
+        formik.values.ProductManager,
+        formik.values.DevOps,
+        formik.values.EnginerData,
+        formik.values.Other,
         formik.values.Other,
     ])
 
@@ -169,24 +236,31 @@ const JobProfile = () => {
     return (
 
         <>
-            <div className="bg-primary min-h-screen flex flex-col">
+            <div className="bg-primary min-h-screen flex flex-col ">
                 <Nav />
                 <section className=" flex grow items-center">
-                    <div className="container mb-16  mx-auto mt-4">
-                        <div className="w-full md:w-4/5 lg:w-2/4  rounded-t  mx-auto bg-white pt-5 md:pt-10 px-4 md:pb-0">
-                            <h1 className="text-3xl px-4">Únete a Devsafío</h1>
-                            <h4 className="text-m px-4 pb-5"> Formulario de Inscripción</h4>
-                            <p className="">Devsafio es una iniciativa que une talento junior lationamericano(trainee y bootcamp) junto a mentores para potenciar su empleabilidad inicial e impactar la industria tecnológica.
+                    <div className="container mb-10  mx-auto mt-4">
+                        <div className="w-full md:w-4/5  rounded-t  mx-auto bg-white pt-5 md:pt-10 px-4 md:pb-4">
+                            <div className="px-5">
+                                <h1 className="text-3xl ">Únete a Devsafío</h1>
+                                <h4 className="text-m  pb-5"> Formulario de Inscripción</h4>
 
-                                Si estás buscando empleo Junior o Trainee (Programación, Diseño UX/UI y Data Science) te dejamos este formulario para que seas parte de distintas ofertas laborales que tenemos junto a importantes empresas en latinoamerica.
+                                <p className="mt-5">
+                                    Devsafio es una iniciativa que une talento junior lationamericano(trainee y bootcamp) junto a mentores para potenciar su empleabilidad inicial e impactar la industria tecnológica.
+                                </p>
+                                <p className="mt-2 ">
+                                    Si estás <span className="font-bold">  buscando empleo Junior o Trainee (Programación, Diseño UX/UI y Data Science)</span>  te dejamos este formulario para que seas parte de distintas ofertas laborales que tenemos junto a importantes empresas en latinoamerica.
+                                </p>
+                                <p className="mt-2 ">Recuerda que todos los <span className="font-bold"> talentos juniors contratados son apoyados y guiados por un mentor senior durante 3 meses </span>(ofertas remuneradas).
+                                </p>
+                                <p className="mt-2 " > Nos puedes seguir en: <a className='text-blue-600' href={'https://www.linkedin.com/company/devsafio'}>Linkedin</a></p>
 
-                                Recuerda que todos los talentos juniors contratados son apoyados y guiados por un mentor senior durante 3 meses (ofertas remuneradas).
+                                <p className="pt-4 ">¡Vamos con todo!</p>
+                                <h1 className="text-2xl  pt-4"> Información Personal</h1>
 
-                                Nos puedes seguir en: https://www.linkedin.com/company/devsafio
-
-                                ¡Vamos con todo!</p>
+                            </div>
                         </div>
-                        <div className="w-full md:w-4/5 lg:w-2/4  rounded-b  mx-auto bg-white pt-0 px-4 md:pb-7 ">
+                        <div className="w-full md:w-4/5  rounded-b  mx-auto bg-white pt-0 px-4 md:pb-7 ">
                             <form className="p-1" onSubmit={formik.handleSubmit}>
 
                                 <div className="p-4">
@@ -209,24 +283,22 @@ const JobProfile = () => {
                                             />
                                         ))
                                     }
-                                    {/* {!!check && <span className="text-error">Selecciona Algun check</span>} */}
+
                                     {check === true ? <span className="text-error">Seleccionar al menos una casilla</span> : ''}
-                                    {/* {formik.errors.accepted && formik.touched.name ? <span style={{ color: 'red' }} > {formik.errors.accepted}</span> : ''} */}
+
                                 </div>
 
-                                {/* <div >
-                                    <button type="submit" className="btn btn-wide color: bg-primary ">Enviar</button>
-                                </div> */}
+
                                 <ButtonComponent
                                     style={'primary'}
-                                    type={'submit'}>
-
+                                    type={'submit'}
+                                    label={'siguiente'}>
                                 </ButtonComponent>
                             </form>
                         </div>
                     </div>
                 </section>
-            </div>
+            </div >
         </>
     )
 };

@@ -6,22 +6,22 @@ const InputComponent = ({ type, id, placeholder, name, label, formik, onChange, 
   const inputDefault = ["input input-bordered rounded w-full input-md text-base  focus:border-2 focus:border-primary focus:outline-none"];
   return (
     <>
-      {titleHead.show ? <h1>{titleHead.title}</h1> : null}
+      {titleHead.show ? <h1 className="py-5">{titleHead.title}</h1> : null}
       <div
         className={
           type === "checkbox" ? checkRadioLayout : "mb-2"
         }
       >
-        <label className={type === "checkbox" ? 'label capitalize px-0 order-2':"label capitalize px-0"}>
+        <label className={type === "checkbox" ? 'label capitalize px-0 order-2' : "label capitalize px-0"}>
           <span className="label-text text-base">{label}</span>
         </label>
         <input
           type={type}
           placeholder={placeholder}
           className={
-            type === "checkbox" 
-            ? checkInput
-            : inputDefault
+            type === "checkbox"
+              ? checkInput
+              : inputDefault
           }
           name={name}
           id={id}
