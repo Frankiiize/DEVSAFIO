@@ -2,17 +2,19 @@ import React from "react";
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
-import { AiOutlineLogin } from 'react-icons/ai'
+import {AiOutlineLogin} from 'react-icons/ai'
 import { Link } from "react-router-dom";
+
 
 
 
 const navigation = [
   { name: 'Sign up', href: '/register', current: false },
-  { name: <React.Fragment>{'Login'} <AiOutlineLogin /></React.Fragment>, href: '#', current: false, }
-
-
+  { name: <React.Fragment>{'Login'} <AiOutlineLogin/></React.Fragment>, href: '/login', current: false,},  
 ]
+
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -37,23 +39,26 @@ const Nav = () => {
                 </Disclosure.Button>
               </div>
               <div className="flex-shrink-0 flex items-start">
-                <img
-                  className="block lg:hidden h-8 w-auto"
-                  src="https://devsafio.com/wp-content/uploads/2022/02/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png"
-                  alt="Workflow"
-                />
-                <img
-                  className="hidden lg:block h-8 w-auto"
-                  src="https://devsafio.com/wp-content/uploads/2022/02/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png"
-                  alt="Workflow"
-                />
-              </div>
+                
+                <a href="/" className="hover:bg-gray-700 px-3 py-2 rounded-md">
+                  <img
+                    className="block lg:hidden h-8 w-auto"
+                    src={require("./../../images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png")}
+                    alt="Workflow"
+                  />
+                  <img
+                    className="hidden lg:block h-8 w-auto"
+                    src={require("./../../images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png")}
+                    alt="Workflow"
+                  />
+                </a>
+                </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-end">
-
+                
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-
+                      
                       <Link
                         key={item.name}
                         to={item.href}
@@ -70,7 +75,7 @@ const Nav = () => {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
+                
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
@@ -140,7 +145,7 @@ const Nav = () => {
                   href={item.href}
                   className={classNames(
                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium flex-row'
+                    'block px-3 py-2 rounded-md text-base font-medium flex-row' 
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >

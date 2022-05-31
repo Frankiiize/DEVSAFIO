@@ -8,16 +8,19 @@ const defaultBtnClass = "btn w-full md:w-1/2 lg:w-2/5 ";
 
 const ButtonComponent = ({ type, style, label = 'enviar' }) => {
   return (
-    <div className="md:flex md:justify-end py-5">
+    <div className={style !== null ? "md:flex md:justify-end py-5" : 'flex items-center'}>
       <button
         type={type}
         className={
           style === "primary"
             ? primaryClass
             : style === "secondary"
-              ? secondaryClass
-              : defaultBtnClass
+            ? secondaryClass
+            : style === null
+            ? undefined
+            : defaultBtnClass
         }
+        onClick={type === 'button' ? onClick : null}
       >
         <span className="tracking-widest text-lg">{label}</span>
       </button>
