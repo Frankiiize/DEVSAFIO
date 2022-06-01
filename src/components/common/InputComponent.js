@@ -48,7 +48,7 @@ const InputComponent = ({ type, radioValue, id, placeholder, name, label, formik
   }
   return (
     <>
-      {titleHead.show ? <h2>{titleHead.title}</h2> : null}
+      {titleHead.show ? <h1 className="py-5">{titleHead.title}</h1> : null}
       <div
         className={
           (type === "checkbox" || type === 'radio')  ? checkRadioLayout : type === 'file' ? 'mb-0' : "mb-2 "

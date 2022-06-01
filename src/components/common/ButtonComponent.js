@@ -6,7 +6,7 @@ const secondaryClass =
   "btn w-full md:w-1/2 lg:w-2/5 color: bg-white text-primary border-primary hover:bg-secondary hover:text-white hover:border-none hover:drop-shadow-xl";
 const defaultBtnClass = "btn w-full md:w-1/2 lg:w-2/5 ";
 
-const ButtonComponent = ({ type, style, children, onClick,  }) => {
+const ButtonComponent = ({ type, style, label = 'enviar', onClick }) => {
   return (
     <div className={style !== null ? "md:flex md:justify-end py-5" : 'flex items-center'}>
       <button
@@ -22,10 +22,7 @@ const ButtonComponent = ({ type, style, children, onClick,  }) => {
         }
         onClick={type === 'button' ? onClick : null}
       >
-        {style !== null &&  <span className="tracking-widest text-lg">Enviar</span>}
-        {
-          children
-        }
+        <span className="tracking-widest text-lg">{label}</span>
       </button>
     </div>
   );

@@ -8,7 +8,6 @@ export const ProtectedRoute = () => {
   return (
     user 
       ? <>
-          <DefaultLayout />
           <Outlet />
         </>
       : <Navigate to="/login" />
