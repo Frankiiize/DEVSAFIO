@@ -10,7 +10,7 @@ const IndexPage = () => {
           <div className=" text-white text-center md:text-left space-y-4 ">
             <div>
               <h1 className="space-y-4 text-5xl flex justify-center flex-col  ">
-                <p>Encuentra tu primer empleo en <p className="font-bold uppercase mt-1"> tecnología</p></p> 
+                <p>Encuentra tu primer empleo en <span className="font-bold uppercase mt-1"> tecnología</span></p> 
               </h1>
             </div>
             <div>
