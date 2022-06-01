@@ -2,8 +2,8 @@ import { useFormik } from "formik";
 import React from "react";
 import { ButtonComponent } from "../../components/common/ButtonComponent";
 import { InputComponent } from "../../components/common/InputComponent";
-import { Nav } from '../../components/nav/Nav';
 import { registerSchema as schema } from "../../components/schemas/schema";
+import { FormsCardContainer } from "../../layout/FormsCardContainer";
 import { handlerInputChangeCreator, validate } from "../../utils/utils";
 const inputConfig = [
   {
@@ -48,8 +48,6 @@ const inputConfig = [
   },
 ]
 
-
-
 const RegisterPage = () => {
 
   const onSubmit = (values) => {
@@ -73,13 +71,11 @@ const RegisterPage = () => {
 
   return (
     <>
-      <div className="bg-primary min-h-screen flex flex-col">
+      <div  className="bg-primary containerWithHeader-min-height flex flex-col">
         <section className=" flex grow items-center animate__animated animate__fadeIn">
           <div className="container mb-16  mx-auto mt-4">
-            <div className="w-full md:w-4/5 lg:w-2/4  rounded-t  mx-auto bg-white pt-5 md:pt-10 px-4 md:pb-0">
+            <FormsCardContainer>
               <h3 className="text-3xl px-4">Registrate</h3>
-            </div>
-            <div className="w-full md:w-4/5 lg:w-2/4  rounded-b  mx-auto bg-white pt-0 px-4 md:pb-7 ">
               <form className="p-1" onSubmit={formik.handleSubmit}>
             
                 <div className="p-4">
@@ -107,7 +103,8 @@ const RegisterPage = () => {
               
                 </div>
               </form>
-            </div>
+            </FormsCardContainer>
+
           </div>
         </section>
 
