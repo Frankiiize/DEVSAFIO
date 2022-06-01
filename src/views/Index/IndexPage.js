@@ -4,8 +4,8 @@ const DefaultLayout = React.lazy(() => import("./../../layout/DefaultLayout"));
 
 const IndexPage = () => {
   return (
-    <div className="min-h-screen bg-primary px-5 md:px-10">
-      <div className="flex flex-col items-center pt-5 md:flex-row md:justify-center">
+    <div className="containerWithHeader-min-height flex bg-primary px-5 md:px-10">
+      <div className="flex flex-col items-center justify-center pb-64 md:flex-row md:justify-center">
         <div className="animate__animated animate__jackInTheBox w-full ">
           <div className=" text-white text-center md:text-left space-y-4 ">
             <div>
