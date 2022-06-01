@@ -46,13 +46,10 @@ const Login = () => {
   return (
     <>
       <div className="bg-primary min-h-screen flex flex-col">
-        <Nav />
-        <section className=" flex grow items-center animate__animated animate__fadeIn">
+        <section className=" flex mt-20 md:mt-0  md:grow md:items-center animate__animated animate__fadeIn">
           <div className="container mb-16  mx-auto mt-4">
-            <div className="w-full md:w-4/5 lg:w-2/4  rounded-t  mx-auto bg-white pt-5 md:pt-10 px-4 md:pb-0">
+            <div className="w-full md:w-4/5 mx-auto lg:w-2/4  rounded-t   bg-white pt-5 md:pt-10 px-4 md:pb-0">
               <h3 className="text-3xl px-4">Iniciar sesion</h3>
-            </div>
-            <div className="w-full md:w-4/5 lg:w-2/4  rounded-b  mx-auto bg-white pt-0 px-4 md:pb-7 ">
               <form className="p-1" onSubmit={formik.handleSubmit}>
             
                 <div className="p-4">
@@ -81,6 +78,7 @@ const Login = () => {
                 </div>
               </form>
             </div>
+            
           </div>
         </section>
 
