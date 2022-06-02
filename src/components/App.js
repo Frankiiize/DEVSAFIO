@@ -9,17 +9,19 @@ const SuspenseScreen = React.lazy(() => import('../components/loaders/SuspenseSc
 const RegisterPage = React.lazy(() => import('../views/register/RegisterPage'));
 const IndexPage = React.lazy(() => import('../views/Index/IndexPage'));
 const JobProfile = React.lazy(() => import('../views/jobProfile/JobProfile'));
+const Postulate = React.lazy(() => import('../views/postulate/Postulate'));
 const Login = React.lazy(() => import('../views/Login/Login'));
 const Dashboard = React.lazy(() => import('../views/Dashboard'));
 
 function App() {
   return (
-    <Suspense fallback={<SuspenseScreen /> }>
+    <Suspense fallback={<SuspenseScreen />}>
       <Routes>
-        <Route path="/" element={<DefaultLayout/>} >
+        <Route path="/" element={<DefaultLayout />} >
           <Route index element={<IndexPage />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/jobProfile' element={<JobProfile />} />
+          <Route path='/postulate' element={<Postulate />} />
           <Route path='/login' element={<Login />} />
           <Route exact path='/dashboard' element={<ProtectedRoute />}>
             <Route
@@ -28,7 +30,7 @@ function App() {
               element={<Dashboard />} />
           </Route>
         </Route>
-        
+
       </Routes>
     </Suspense>
 
