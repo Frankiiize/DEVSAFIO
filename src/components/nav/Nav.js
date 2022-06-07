@@ -4,6 +4,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import {AiOutlineLogin} from 'react-icons/ai'
 import { Link } from "react-router-dom";
+import logo from '../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
 
 
 const navigation = [
@@ -39,13 +40,13 @@ const Nav = () => {
                 <a href="/" className="hover:bg-gray-700 px-3 py-2 rounded-md">
                   <img
                     className="block lg:hidden h-8 w-auto"
-                    src={require("./../../images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png")}
-                    alt="Workflow"
+                    src={logo}
+                    alt="logo"
                   />
                   <img
                     className="hidden lg:block h-8 w-auto"
-                    src={require("./../../images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png")}
-                    alt="Workflow"
+                    src={logo}
+                    alt="logo"
                   />
                 </a>
                 </div>
@@ -70,7 +71,7 @@ const Nav = () => {
                   </div>
                 </div>
               </div>
-              <div className="hidden  absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="hidden absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
                   <div>

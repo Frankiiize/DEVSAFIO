@@ -5,6 +5,7 @@ import { jopProfileShema as schema } from "../../components/schemas/schema";
 import { validate, handlerInputChangeCreator } from "../../utils/utils";
 import { Nav } from "../../components/nav/Nav";
 import { ButtonComponent } from "../../components/common/ButtonComponent";
+import { FormsCardContainer } from "../../layout/FormsCardContainer";
 
 
 const inputConfig = [
@@ -167,8 +168,6 @@ const inputConfig = [
 
 ]
 
-
-
 const JobProfile = () => {
 
     const [check, setCheck] = useState(false);
@@ -237,10 +236,10 @@ const JobProfile = () => {
 
         <>
             <div className="bg-primary min-h-screen flex flex-col ">
-                <Nav />
                 <section className=" flex grow items-center">
                     <div className="container mb-10  mx-auto mt-4">
-                        <div className="w-full md:w-4/5  rounded-t  mx-auto bg-white pt-5 md:pt-10 px-4 md:pb-4">
+                     
+                        <FormsCardContainer >
                             <div className="px-5">
                                 <h1 className="text-3xl ">Únete a Devsafío</h1>
                                 <h4 className="text-m  pb-5"> Formulario de Inscripción</h4>
@@ -259,8 +258,6 @@ const JobProfile = () => {
                                 <h1 className="text-2xl  pt-4"> Información Personal</h1>
 
                             </div>
-                        </div>
-                        <div className="w-full md:w-4/5  rounded-b  mx-auto bg-white pt-0 px-4 md:pb-7 ">
                             <form className="p-1" onSubmit={formik.handleSubmit}>
 
                                 <div className="p-4">
@@ -295,7 +292,7 @@ const JobProfile = () => {
                                     label={'siguiente'}>
                                 </ButtonComponent>
                             </form>
-                        </div>
+                        </FormsCardContainer>
                     </div>
                 </section>
             </div >

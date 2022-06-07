@@ -1,5 +1,6 @@
 import React from "react";
 import "animate.css";
+import hero from '../../assets/images/referencia.png'
 const DefaultLayout = React.lazy(() => import("./../../layout/DefaultLayout"));
 
 const IndexPage = () => {
@@ -24,7 +25,7 @@ const IndexPage = () => {
           </div>
         </div>
         <div className="object-contain w-full  max-w-md  animate__animated animate__fadeIn animate__delay-1s">
-          <img className="w-full" src={require("../../images/referencia.png")} />
+          <img className="w-full" src={hero} />
         </div>
       </div>
     </div>
