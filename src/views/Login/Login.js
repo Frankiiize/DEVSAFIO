@@ -1,10 +1,13 @@
+import React, { useContext } from "react";
 import { useFormik } from "formik";
-import React from "react";
 import { ButtonComponent } from "../../components/common/ButtonComponent";
 import { InputComponent } from "../../components/common/InputComponent";
 import { loginSchema as schema } from "../../components/schemas/schema";
+import { authContext } from "../../context/authContext";
 import { FormsCardContainer } from "../../layout/FormsCardContainer";
+import { login as loginService } from "../../services/users";
 import { handlerInputChangeCreator, validate } from "../../utils/utils";
+import { useNavigate } from "react-router-dom";
 const inputConfig = [
   {
     type: 'email',
@@ -25,8 +28,17 @@ const inputConfig = [
 ]
 
 const Login = () => {
-  const onSubmit = (values) => {
+  const { user, handleLogin } = useContext(authContext);
+  let navigate = useNavigate();
+  const onSubmit = async (values) => {
     console.log(values);
+    loginService({email: formik.values.email,password: formik.values.password })
+      .then((res) => {
+        debugger 
+        handleLogin({token: res.result.access_token, logged: true, userData: res.result.user});
+        navigate("../dashboard", { replace: true });
+        console.log(res)
+      } );
   }
   const formik = useFormik({
     initialValues: {
