@@ -1,17 +1,20 @@
 const URL_BASE = process.env.REACT_APP_CLIENTE_API_URL;
 
 const headers = {
-  headers: {'Content-Type': 'application/json'}
+  headers: {
+    'Content-Type': 'application/json',
+  },
 };
 
 const request = async function (options) {
   let localStorageUser = JSON.parse(window.localStorage.getItem("user"));
-  const op = {...options, ...headers};
+  let op = {...options, ...headers};
   if (localStorageUser) {
     const authToken = { Authorization: `Bearer ${localStorageUser.token}` };
     op.headers = {...op.headers, ...authToken}
   }
-  const req = await fetch (`${URL_BASE}${options.url}`, op );
+  let { getHeaders, ...reqOptions } = op; 
+  const req = await fetch (`${URL_BASE}${options.url}`, reqOptions );
   const response = await req.json()
   if(options.getHeaders){
     const headers =  req.headers.entries();
