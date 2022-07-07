@@ -15,6 +15,8 @@ const request = async function (options) {
   }
   let { getHeaders, ...reqOptions } = op; 
   const req = await fetch (`${URL_BASE}${options.url}`, reqOptions );
+  debugger
+  const statusCode = req.status;
   const response = await req.json()
   if(options.getHeaders){
     const headers =  req.headers.entries();
@@ -22,9 +24,10 @@ const request = async function (options) {
     for(let pair of headers ){
       responseHeaders = {...responseHeaders, [pair[0]] : pair[1]}
     }
-    return {...response, headers : responseHeaders} ;
+    let sendHeaders = {...response, headers : responseHeaders} 
+    return {...sendHeaders, status : statusCode} ;
   }
-  return response ;
+  return {...response, status: statusCode} ;
 };
 
 export default request;

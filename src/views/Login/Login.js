@@ -9,54 +9,34 @@ import { login as loginService } from "../../services/users";
 import { handlerInputChangeCreator, validate } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 import { SpinnerLoader } from "../../components/loaders/SpinnerLoader";
-const inputConfig = [
-  {
-    type: "email",
-    id: "email",
-    placeholder: "email@gmail.com",
-    name: "email",
-    label: "email",
-    autoComplete: "off",
-  },
-  {
-    type: "password",
-    id: "password",
-    placeholder: "contraseña",
-    name: "password",
-    label: "contraseña",
-    autoComplete: "off",
-  },
-];
+import { responseOnValidate } from "../../utils/alerts";
+import { inputConfig } from "./data/inputConfig";
 
 const Login = () => {
-  const { user, handleLogin } = useContext(authContext);
+  const { handleLogin } = useContext(authContext);
   const [formLoading, setFormLoading] = useState(false);
   let navigate = useNavigate();
 
   const onSubmit = async (values) => {
     console.log(values);
     setFormLoading(true);
-    loginService({
-      email: formik.values.email,
-      password: formik.values.password,
-    })
+    loginService({  email: formik.values.email,  password: formik.values.password})
     .then((res) => {
-      debugger;
-      if(res.success){
-        handleLogin({
-          token: "TOKEN__FAKE",
-          logged: true,
-          userData: res.data.user,
-        });
+      responseOnValidate(res, () => { handleLogin("TOKEN__FAKE",  res.data.user, )})
+      .then(() => {
         setFormLoading(false);
         navigate("../dashboard", { replace: true, state: res });
-        console.log(res);
-      } else {
-        console.log(res.message)
+      })
+      .catch(() => {
         setFormLoading(false);
-      }
+      });
+    })
+    .catch(() => {
+      setFormLoading(false);
+      window.location.reload()
     });
   };
+
   const formik = useFormik({
     initialValues: {
       email: "",
