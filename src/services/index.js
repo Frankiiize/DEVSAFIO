@@ -15,7 +15,6 @@ const request = async function (options) {
   }
   let { getHeaders, ...reqOptions } = op; 
   const req = await fetch (`${URL_BASE}${options.url}`, reqOptions );
-  debugger
   const statusCode = req.status;
   const response = await req.json()
   if(options.getHeaders){

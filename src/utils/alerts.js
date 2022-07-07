@@ -43,11 +43,24 @@ import Swal from "sweetalert2";
 export const responseOnValidate = (res, onSucces = null) => {
   if(!!res){
     return new Promise((resolve, reject) => {
-      debugger
       switch(res.status){
         case 200:
           onSucces();
           resolve();
+          break
+        case 201:
+          Swal.fire({
+            title: 'Exito',
+            text: res.message,
+            icon: 'success',
+            customClass: {
+              confirmButton: ' flex w-full  border-none color: bg-primary text-white hover:bg-accent hover:border-none hover:drop-shadow-xl'
+            },
+            didClose: () => {
+              onSucces();
+              resolve();
+             }
+          });
           break
         case 400: 
           Swal.fire({
@@ -70,7 +83,7 @@ export const responseOnValidate = (res, onSucces = null) => {
               }
               
             });
-            reject();
+            reject(res);
             break
       }
     })

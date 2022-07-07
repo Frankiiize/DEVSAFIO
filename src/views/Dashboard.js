@@ -20,11 +20,10 @@ const Dashboard = () => {
       setShowWellcome(false);
     },3000)
   },[])
-  console.log(user)
   return (
     <>
       {
-       ( showWellcome)  && 
+       (showWellcome)  && 
          Wellcome(user)
       }
     <h1>bienvenido</h1>
