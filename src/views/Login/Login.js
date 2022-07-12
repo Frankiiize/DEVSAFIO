@@ -20,21 +20,25 @@ const Login = () => {
   const onSubmit = async (values) => {
     console.log(values);
     setFormLoading(true);
-    loginService({  email: formik.values.email,  password: formik.values.password})
-    .then((res) => {
-      responseOnValidate(res, () => { handleLogin("TOKEN__FAKE",  res.data.user, )})
-      .then(() => {
-        setFormLoading(false);
-        navigate("../dashboard", { replace: true, state: res });
+    loginService({
+      email: formik.values.email,
+      password: formik.values.password,
+    })
+      .then((res) => {
+        responseOnValidate(res, () => {
+          handleLogin("TOKEN__FAKE", res.data.user);
+        })
+          .then(() => {
+            setFormLoading(false);
+            navigate("../dashboard", { replace: true, state: res });
+          })
+          .catch(() => {
+            setFormLoading(false);
+          });
       })
       .catch(() => {
         setFormLoading(false);
       });
-    })
-    .catch(() => {
-      setFormLoading(false);
-      window.location.reload()
-    });
   };
 
   const formik = useFormik({
@@ -52,43 +56,39 @@ const Login = () => {
     <>
       <div className="bg-primary containerWithHeader-min-height flex flex-col">
         <section className=" flex mt-20 md:mt-0 grow md:items-center animate__animated animate__fadeIn">
-            {
-              !formLoading 
-                ? (
-                  <div className="container mb-16   mx-auto mt-4">
-                    <FormsCardContainer>
-                      <h3 className="text-3xl px-4">Iniciar sesion</h3>
-                      <form className="p-1" onSubmit={formik.handleSubmit}>
-                        <div className="p-4">
-                          <>
-                            {inputConfig.map((item, index) => (
-                              <InputComponent
-                                key={`input-${index}${item.name}`}
-                                label={item.label}
-                                type={item.type}
-                                onChange={handleTxtChange}
-                                id={item.id}
-                                placeholder={item.placeholder}
-                                name={item.name}
-                                formik={formik}
-                              />
-                            ))}
-                            <ButtonComponent
-                              style={"primary"}
-                              type={"submit"}
-                            ></ButtonComponent>
-                          </>
-                        </div>
-                      </form>
-                    </FormsCardContainer>
+          {!formLoading ? (
+            <div className="container mb-16   mx-auto mt-4">
+              <FormsCardContainer>
+                <h3 className="text-3xl px-4">Iniciar sesion</h3>
+                <form className="p-1" onSubmit={formik.handleSubmit}>
+                  <div className="p-4">
+                    <>
+                      {inputConfig.map((item, index) => (
+                        <InputComponent
+                          key={`input-${index}${item.name}`}
+                          label={item.label}
+                          type={item.type}
+                          onChange={handleTxtChange}
+                          id={item.id}
+                          placeholder={item.placeholder}
+                          name={item.name}
+                          formik={formik}
+                        />
+                      ))}
+                      <ButtonComponent
+                        style={"primary"}
+                        type={"submit"}
+                      ></ButtonComponent>
+                    </>
                   </div>
-                ) 
-              : (
-                  <div className=" container mb-16 flex justify-center w-full  items-center ">
-                    <SpinnerLoader />
-                  </div>
-                )
-            }
+                </form>
+              </FormsCardContainer>
+            </div>
+          ) : (
+            <div className=" container mb-16 flex justify-center w-full  items-center ">
+              <SpinnerLoader />
+            </div>
+          )}
         </section>
       </div>
     </>
