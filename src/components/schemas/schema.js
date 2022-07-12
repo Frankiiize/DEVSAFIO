@@ -56,6 +56,8 @@ let postulate = Yup.object().shape({
     .required("Selecciona tu situación educativa actual"),
   englishLevel: Yup.string()
     .required("Selecciona tu nivel de ingles"),
+  otherTec: Yup.string()
+    
 
 });
 

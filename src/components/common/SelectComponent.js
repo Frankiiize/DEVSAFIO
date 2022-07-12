@@ -33,7 +33,7 @@ formik y la validara con el schema de Yup.
 const SelectComponent = ({ options,  dataset, onChange, formik, label, name, id }) => {
   return (
     <>
-      <div className="mb-2">
+      <div className="mb-2 text-lg">
         <label >{label}</label>
       </div>
       <select

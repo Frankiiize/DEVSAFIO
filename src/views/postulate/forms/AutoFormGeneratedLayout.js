@@ -1,11 +1,11 @@
 import React from 'react';
 import { InputComponent } from '../../../components/common/InputComponent';
 
-export const PostulateForm1 = ({inputs, stateFormik , onChange}) => {
+export const AutoFormGeneratedLayout = ({inputs,indexPrincipal, stateFormik , onChange, slice = {start: undefined, end: undefined}}) => {
   return (
     <>
       {
-        inputs.map((item, index) => (
+        inputs.slice(slice.start, slice.end).map((item, index) => (
           <InputComponent
             key={`input-${index}${item.name}`}
             label={item.label}
@@ -16,7 +16,8 @@ export const PostulateForm1 = ({inputs, stateFormik , onChange}) => {
             name={item.name}
             formik={stateFormik}
             onChange={onChange}
-            dataset={item.dataset}
+            options={item.options}
+            dataset={`${item.dataset}-${indexPrincipal}`}
           />
         ))
       }

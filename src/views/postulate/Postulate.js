@@ -2,24 +2,35 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { InputComponent } from "../../components/common/InputComponent";
 import { jopProfileShema as schema, postulateSchema, dinamicSchema } from "../../components/schemas/schema";
-import { validate, handlerInputChangeCreator } from "../../utils/utils";
+import { validate, handlerInputChangeCreator, parsedAutoFormValues } from "../../utils/utils";
 import { ButtonComponent } from "../../components/common/ButtonComponent";
 import { FormsCardContainer } from "../../layout/FormsCardContainer";
 //inputsConfig
-import { stepOneInputs, stepTwoinputs, educationInputs } from "./data/inputsConfig";
-import { PostulateForm1 } from "./forms/PostulateForms";
+import { stepOneInputs, stepTwoinputs, stepThreeInputs, educationInputs, languageInputs, dbLibsFrameworkInputs, toolsInput } from "./data/inputsConfig";
+import { FormGrupLayout } from "./forms/FormGrupLayout";
+import { AutoFormGeneratedLayout } from "./forms/AutoFormGeneratedLayout";
 
 const JobProfile = () => {
-  const [formSteps, setFormSteps] = useState(2);
+  const [formSteps, setFormSteps] = useState(1);
   const [ educationFiels, setEducationFields ] = useState([educationInputs]);
+  const [ languageFiels, setLanguageFields ] = useState([languageInputs]);
+  const [ dbLibsFrameworkFields, setDbLibsFrameworkFields ] = useState([dbLibsFrameworkInputs]);
+  const [ toolsFields, setToolFields ] = useState([toolsInput]);
 
   const onStepSubmit = () => {
     setFormSteps(() => formSteps + 1)
+    window.scrollTo({
+      top:0,
+      behavior: 'smooth'
+    })
   };
+
   const onSubmit = (values) =>{
-    console.log(values.generatedForm.map((e) => {
-      return e
-    }))
+    const generatedFormParse = parsedAutoFormValues(formikStepTwo.values)
+    console.log(generatedFormParse)
+    console.log(formikStepOne.values)
+    console.log(formikStepTwo.values)
+    console.log(formikStepThree.values)
   }
   const formikStepOne = useFormik({
     initialValues: {
@@ -51,18 +62,45 @@ const JobProfile = () => {
   const formikStepTwo = useFormik({
     initialValues: {
       maxEducationLevel: "",
-      generatedForm : [],
       actualEducationSituation: '',
       englishLevel:'',
+      otherTec:'',
+      generatedForm : [],
+      generatedFormLanguages:[],
+      generatedFormDbLibsFrameworks: [],
+      generatedFormTools: []
     },
     validate: validate(postulateSchema),
-    onSubmit: onSubmit
-  })
+    onSubmit: onStepSubmit
+  });
+  const formikStepThree = useFormik({
+    initialValues: {
+      cvUrl: "",
+      urlLinkedin : "",
+      urlPortafolio:"",
+      projectDescription: "",
+      experience:"",
+      responsabity:false,
+      leader:false,
+      flexible: false,
+      innovative:false,
+      analytical:false,
+      sociable:false,
+      problemResolution:false,
+      productivity:false,
+      multitask:false,
+      empathy:false,
+      negotiation:false,
+      resultsOriented:false,
+      resilient:false,
 
+    },
+    // validate: validate(postulateSchema),
+    onSubmit: onSubmit
+  });
   const handleTxtChange = handlerInputChangeCreator(formikStepOne);
   const handleTxtChange2 = handlerInputChangeCreator(formikStepTwo);
-  console.log(formikStepTwo.values)
-
+  const handleTxtChange3 = handlerInputChangeCreator(formikStepThree);
   return (
     <>
       <div className="bg-primary min-h-screen flex flex-col ">
@@ -113,15 +151,22 @@ const JobProfile = () => {
                   </p>
 
                   <p className="pt-4 ">¡Vamos con todo!</p>
-                  <h1 className="text-2xl  pt-4"> Información Personal</h1>
                 </div>
               )}
+              <div className="steps-horizontal w-full mt-10">
+                <ul className="steps">
+                  <li className={formSteps === 1 ? 'step step-accent after:text-white' : 'step step-primary' }data-content={formSteps === 2 ? '✓' : 1}></li>
+                  <li className={formSteps === 2 ? 'step step-accent' : 'step step-primary' }data-content={formSteps === 3 ? '✓' : 2}></li>
+                  <li className={formSteps === 3 ? 'step step-accent text-white' : 'step step-primary' } data-content="3"></li>
+                </ul>
+              </div>
               <form className="p-1" /* onSubmit={formik2.handleSubmit} */>
                 <div className="p-4">
                   {
                     formSteps === 1 && (
                       <>
-                        <PostulateForm1 
+                      <h1 className="text-2xl  pt-4"> Información Personal</h1>
+                        <FormGrupLayout 
                           inputs={stepOneInputs}
                           stateFormik={formikStepOne}
                           onChange={handleTxtChange}
@@ -132,73 +177,46 @@ const JobProfile = () => {
                   {
                   formSteps === 2 && (
                     <>
-                      {
-                        stepTwoinputs.slice(0,1).map((item, index) => (
-                          <InputComponent
-                            key={`input-${index}${item.name}`}
-                            label={item.label}
-                            type={item.type}
-                            titleHead={item.titleHead}
-                            id={item.id}
-                            placeholder={item.placeholder}
-                            name={item.name}
-                            formik={formikStepTwo}
+                    <FormGrupLayout 
+                      inputs={stepTwoinputs}
+                      stateFormik={formikStepTwo}
+                      onChange={handleTxtChange2}
+                      slice={{start: 0 , end: 1}}
+                    />
+                    <p className="text-xl my-5">¿Dónde estudiaste? </p>
+                    {
+                      educationFiels.map((item, indexPrincipal) => (
+                        <div key={`Input-container-${indexPrincipal}`} className={" w-full drop-shadow-md rounded-md p-5 bg-slate-100 mb-5" } >
+                          <AutoFormGeneratedLayout 
+                            inputs={item}
+                            stateFormik={formikStepTwo}
                             onChange={handleTxtChange2}
-                            options={item.options}
+                            indexPrincipal={indexPrincipal}
                           />
-                        ))
+                        </div>
+                      ))
+                    }
+                    <ButtonComponent
+                      style={"primary-small"}
+                      type={"button"}
+                      label={"añadir"}
+                      onClick={() =>
+                        setEducationFields([
+                          ...educationFiels,
+                          ...[educationInputs],
+                        ])
                       }
-                      <span>¿Dónde estudiaste? </span>
-                      {
-                        educationFiels.map((item, indexPrincipal) => (
-                          <div key={`Input-container-${indexPrincipal}`} className={"bg-accent rounded-md ease-in duration-300 my-2   p-2 " } >
-                            { 
-                              item.map((element, index) => (
-                                  <InputComponent
-                                    key={`input-${index}${element.name}`}
-                                    label={element.label}
-                                    type={element.type}
-                                    titleHead={element.titleHead}
-                                    id={element.id}
-                                    placeholder={element.placeholder}
-                                    name={element.name}
-                                    formik={formikStepTwo}
-                                    onChange={handleTxtChange2}
-                                    options={element.options}
-                                    dataset={`${element.dataset}-${indexPrincipal}`}
-                                  />
-                                ))
-                              }
-                          </div>
-                        ))
-                      }
-                      <ButtonComponent
-                        style={"primary"}
-                        type={"button"}
-                        label={"añadir"}
-                        onClick={() =>
-                          setEducationFields([
-                            ...educationFiels,
-                            ...[educationInputs],
-                          ])
-                        }
+                    />
+                    <div className="mt-5">
+                      <FormGrupLayout 
+                        inputs={stepTwoinputs}
+                        stateFormik={formikStepTwo}
+                        onChange={handleTxtChange2}
+                        slice={{start: 1, end: 3}}
                       />
-                      {stepTwoinputs.slice(1).map((item, index) => (
-                        <InputComponent
-                          key={`input-${index}${item.name}`}
-                          label={item.label}
-                          type={item.type}
-                          titleHead={item.titleHead}
-                          id={item.id}
-                          placeholder={item.placeholder}
-                          name={item.name}
-                          formik={formikStepTwo}
-                          onChange={handleTxtChange}
-                          options={item.options}
-                        />
-                      ))}
-                    <div>
-                      <h3>Queremos conocer tus competencias y experiencia. Para cada herramienta queremos que agregues el nivel que sientes que tienes según esta nomenclatura:</h3>
+                    </div>
+                    <div className="text-justify">
+                      <h3 className="text-xl mt-5 mb-2">Queremos conocer tus competencias y experiencia. Para cada herramienta queremos que agregues el nivel que sientes que tienes según esta nomenclatura:</h3>
                       <ul>
                         <li><strong>Nivel 1</strong>: No tengo experiencia laboral, solo nociones teóricas básicas</li>
                         <li><strong>Nivel 2 </strong>: No tengo experiencia laboral, pero he desarrollado proyectos utilizando esta tecnología/herramienta. </li>
@@ -206,10 +224,94 @@ const JobProfile = () => {
                         <li><strong>Nivel 4 </strong>: Tengo experiencia laboral (+1 año) y/o autonomía completa a la hora de desarrollar proyectos. </li>
                         <li><strong>Nivel 5</strong>: Tengo mucha experiencia laboral y he liderado proyectos en esta tecnología.</li>
                       </ul>
-                      <p>Si crees que estas herramientas no sirven para el cargo que estás buscando, no te preocupes, puedes dejarlo en blanco.</p>
+                      <p className="pt-3">Si crees que estas herramientas no sirven para el cargo que estás buscando, no te preocupes, puedes dejarlo en blanco.</p>
                     </div>
+                    {
+                      languageFiels.map((item, indexPrincipal) => (
+                        <div key={`Input-container-${indexPrincipal}`} className={" w-full drop-shadow-sm rounded-md p-5 bg-slate-100 my-5"} >
+                          <AutoFormGeneratedLayout 
+                            inputs={item}
+                            stateFormik={formikStepTwo}
+                            onChange={handleTxtChange2}
+                            indexPrincipal={indexPrincipal}
+                          />
+                        </div>
+                      ))
+                    }
+                      <ButtonComponent
+                      style={"primary-small"}
+                      type={"button"}
+                      label={"añadir"}
+                      onClick={() =>
+                        setLanguageFields([
+                          ...languageFiels,
+                          ...[languageInputs],
+                        ])
+                      }
+                    />
+                    {
+                      dbLibsFrameworkFields.map((item, indexPrincipal) => (
+                        <div key={`Input-container-${indexPrincipal}`} className={"w-full drop-shadow-sm rounded-md p-5 bg-slate-100 my-5" } >
+                          <AutoFormGeneratedLayout 
+                            inputs={item}
+                            stateFormik={formikStepTwo}
+                            onChange={handleTxtChange2}
+                            indexPrincipal={indexPrincipal}
+                          />
+                        </div>
+                      ))
+                    }
+                      <ButtonComponent
+                       style={"primary-small"}
+                      type={"button"}
+                      label={"añadir"}
+                      onClick={() =>
+                        setDbLibsFrameworkFields([
+                          ...dbLibsFrameworkFields,
+                          ...[dbLibsFrameworkInputs],
+                        ])
+                      }
+                    />
+                    {
+                      toolsFields.map((item, indexPrincipal) => (
+                        <div key={`Input-container-${indexPrincipal}`} className={"w-full drop-shadow-sm rounded-md p-5 bg-slate-100 my-5" } >
+                          <AutoFormGeneratedLayout 
+                            inputs={item}
+                            stateFormik={formikStepTwo}
+                            onChange={handleTxtChange2}
+                            indexPrincipal={indexPrincipal}
+                          />
+                        </div>
+                      ))
+                    }
+                      <ButtonComponent
+                       style={"primary-small"}
+                      type={"button"}
+                      label={"añadir"}
+                      onClick={() =>
+                        setToolFields([
+                          ...toolsFields,
+                          ...[toolsInput],
+                        ])
+                      }
+                    />
+                    <FormGrupLayout 
+                      inputs={stepTwoinputs}
+                      stateFormik={formikStepTwo}
+                      onChange={handleTxtChange2}
+                      slice={{start: 3}}
+                    />
                     </>
                   )
+                  }
+                  {
+                    formSteps === 3 && (
+                      <FormGrupLayout 
+                        inputs={stepThreeInputs}
+                        stateFormik={formikStepThree}
+                        onChange={handleTxtChange3}
+                      />
+                    )
                   }
                 </div>
                 <ButtonComponent
@@ -221,6 +323,8 @@ const JobProfile = () => {
                       formikStepOne.handleSubmit();
                     } else if (formSteps === 2) {
                       formikStepTwo.handleSubmit();
+                    } else {
+                      formikStepThree.handleSubmit();
                     }
                   }}
                 ></ButtonComponent>

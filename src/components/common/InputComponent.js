@@ -33,7 +33,7 @@ const inputConfig = [
     id: 'radio',
     name: 'todos los radio grup deben de tener el mismo name',
     label: 'radio label',
-    value: 'debes enviar el valor del radio para que este sea capturado por formik'
+    value: 'debes enviar el valor del radio para que este sea capturado por formik || tienes que pasarle el radioValue por props ( item.value) '
   },
 ]
 */
@@ -49,7 +49,7 @@ const InputComponent = ({ type, dataset, radioValue, id, placeholder, name, labe
   }
   return (
     <>
-      {titleHead.show ? <h1 className="py-5">{titleHead.title}</h1> : null}
+      {titleHead.show ? <h1 className="pt-5 pb-2 text-2xl">{titleHead.title}</h1> : null}
       <div
         className={
           (type === "checkbox" || type === 'radio') ? checkRadioLayout : type === 'file' ? 'mb-0' : "mb-2 "
@@ -69,11 +69,11 @@ const InputComponent = ({ type, dataset, radioValue, id, placeholder, name, labe
               htmlFor={id}
               className={
                 (type === "checkbox" || type === 'radio' || type === 'file')
-                  ? 'label capitalize px-0 order-2'
+                  ? 'label capitalize  px-0 order-2'
                   : "label capitalize px-0"}>
               {
                 type !== 'file'
-                  ? <span className="label-text text-base">{label}</span>
+                  ? <span className="label-text text-lg">{label}</span>
                   :
                   <div className="flex items-center ">
                     {
