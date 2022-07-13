@@ -1,4 +1,3 @@
-import { yupToFormErrors } from "formik";
 import * as Yup from "yup";
 const ACEPTED_PHOTOS = ['image/jpg','image/jpeg','image/png'];
 
@@ -31,6 +30,13 @@ let jopSchema = basicSchema.shape({
     .required('ingresa tu ciudad'),
   country: Yup.string()
     .required('ingresa tu pais'),
+    multipleCheck: Yup.array().test({
+      message: 'debes seleccionar una casilla',
+      test: (value) => value.some((v) =>{
+       return v.value === true
+      }),
+    }
+    )
 })
 
 let login = Yup.object().shape({
@@ -43,6 +49,19 @@ let login = Yup.object().shape({
     .required("Contraseña es requeridad"),
 });
 
+let postulate = Yup.object().shape({
+  maxEducationLevel: Yup.string()
+    .required("Selecciona tu nivel de educacion"),
+  actualEducationSituation: Yup.string()
+    .required("Selecciona tu situación educativa actual"),
+  englishLevel: Yup.string()
+    .required("Selecciona tu nivel de ingles"),
+  otherTec: Yup.string()
+    
+
+});
+
+
 export const registerSchema = () => {
   return register;
 }
@@ -53,3 +72,8 @@ export const jopProfileShema = () => {
 export const loginSchema = () => {
   return login;
 }
+export const postulateSchema = () => {
+  return postulate;
+}
+
+
