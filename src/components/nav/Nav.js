@@ -3,22 +3,25 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import {AiOutlineLogin} from 'react-icons/ai'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from '../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
 
 
 const navigation = [
-  { name: 'Programa mentorías', href: '#', current: false },
-  { name: 'Busco empleo', href: '/register', current: false },
+  { name: 'Sign up', href: '/register', current: false },
   { name: <React.Fragment>{'Login'} <AiOutlineLogin/></React.Fragment>, href: '/login', current: false,},  
 ]
 
+const samePageNavigation = [ 
+  { name: 'Programa mentorias', href: '#program', current: false,  },
+]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 const Nav = () => {
+  const location = useLocation();
   return (
     <Disclosure as="nav" className="bg-primary px-5 md:px-10">
       {({ open }) => (
@@ -55,20 +58,40 @@ const Nav = () => {
                 
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'px-3 py-2 rounded-md text-sm font-medium  flex items-center'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                    <>
+                      {
+                        location.pathname === '/' && 
+                          samePageNavigation.map((item) => (
+                            <a
+                            key={item.name}
+                            href={item.href}
+                            className={classNames(
+                              item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'px-3 py-2 rounded-md text-sm font-medium  flex items-center'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
+                            >
+                              {item.name}
+                            </a>
+                          ))
+                      }
+                      {
+                        navigation.map((item) => (
+                          
+                          <Link
+                            key={item.name}
+                            to={item.href}
+                            className={classNames(
+                              item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'px-3 py-2 rounded-md text-sm font-medium  flex items-center'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </Link>
+                        ))
+                      }
+                    </>
                   </div>
                 </div>
               </div>
