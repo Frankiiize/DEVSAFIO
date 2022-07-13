@@ -1,6 +1,6 @@
 {
   "name": "devsafio-web",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.6.1",
@@ -15,6 +15,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "sweetalert2": "^11.4.20",
+    "react-social-icons": "^5.13.0",
     "tw-elements": "^1.0.0-alpha12",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
