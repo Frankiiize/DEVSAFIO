@@ -7,7 +7,9 @@ module.exports = {
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+     
     },
+  
     extend: {},
   },
   daisyui: {
@@ -30,6 +32,7 @@ module.exports = {
           "success": "#36D399",
 
           "warning": "#FBBD23",
+          
 
           "error": "#F87272",
         },

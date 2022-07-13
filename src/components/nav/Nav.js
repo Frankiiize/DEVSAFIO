@@ -8,7 +8,8 @@ import logo from '../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
 
 
 const navigation = [
-  { name: 'Sign up', href: '/register', current: false },
+  { name: 'Programa mentorías', href: '#', current: false },
+  { name: 'Busco empleo', href: '/register', current: false },
   { name: <React.Fragment>{'Login'} <AiOutlineLogin/></React.Fragment>, href: '/login', current: false,},  
 ]
 
