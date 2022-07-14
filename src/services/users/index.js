@@ -5,7 +5,6 @@ export const login = async function (user) {
     method: "POST",
     body: JSON.stringify(user) ,
     url: `/auth/login`,
-    getHeaders: true,
   });
 };
 

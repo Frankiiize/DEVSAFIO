@@ -30,12 +30,14 @@ const RegisterPage = () => {
     })
     .then((res) => {
       setFormLoading(false);
-      responseOnValidate(res, () => {handleLogin("TOKEN__FAKE",  res.data.user, ) })
+      responseOnValidate(res, () => setFormLoading(false))
       .then(() => {
-        setFormLoading(false);
-        navigate("../dashboard", { replace: true, state: res });
+        navigate("../postulate", { replace: true, state: res });
       })
-      .catch(() => setFormLoading(false))
+      .catch((err) => {
+        setFormLoading(false);
+        console.log(err);
+      })
     })
   }
   const formik = useFormik({

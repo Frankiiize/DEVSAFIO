@@ -26,7 +26,7 @@ const Login = () => {
     })
       .then((res) => {
         responseOnValidate(res, () => {
-          handleLogin("TOKEN__FAKE", res.data.user);
+          handleLogin(res.token, res.data.user);
         })
           .then(() => {
             setFormLoading(false);

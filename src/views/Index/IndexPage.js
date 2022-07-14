@@ -54,9 +54,9 @@ const IndexPage = () => {
        <div className="box-border px-[15px]  p-3">
           <iframe className=' w-[500px] h-[250px]'
             src="https://youtube.com/embed/z5NPi7WrViU"
-            frameborder="0"
+            frameBorder="0"
             allow="autoplay; encrypted-media"
-            allowfullscreen
+            allowFullScreen
             title="video"
           />{" "}
         </div>
@@ -103,10 +103,10 @@ const IndexPage = () => {
     </div>
     <ScrollToTop />
     
-    <footer class="p-4 bg-primary  shadow md:flex md:items-center md:justify-between md:p-6">
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">	© Copyright 2022  ·  Devsafio
+    <footer className="p-4 bg-primary  shadow md:flex md:items-center md:justify-between md:p-6">
+        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">	© Copyright 2022  ·  Devsafio
         </span>
-        <ul class="flex flex-wrap items-center mt-3  sm:mt-0 mr-11">
+        <ul className="flex flex-wrap items-center mt-3  sm:mt-0 mr-11">
             <li>
              <SocialIcon url="https://www.linkedin.com/company/devsafio" bgColor='white' />
             </li>

@@ -18,6 +18,8 @@ export const FormGrupLayout = ({inputs, stateFormik , onChange, slice = {start: 
             onChange={onChange}
             options={item.options}
             dataset={item.dataset}
+            checkValue={item.value}
+            radioValue={item.value}
           />
         ))
       }

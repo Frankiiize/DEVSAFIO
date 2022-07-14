@@ -16,6 +16,30 @@ export const stepOneInputs = [
     autoComplete: "family-name",
   },
   {
+    type: "select",
+    id: "gender",
+    name: "gender",
+    label: "Genero",
+    options: [
+      {
+        value: "masculino",
+        text: "Masculino",
+      },
+      {
+        value: "femenino",
+        text: "Femenino",
+      },
+      {
+        value: "otro",
+        text: "Otro",
+      },
+      {
+        value: "prefiero-no-decirlo",
+        text: "Prefiero no decirlo",
+      },
+    ]
+  },
+  {
     type: "email",
     id: "email",
     placeholder: "email@gmail.com",
@@ -48,6 +72,52 @@ export const stepOneInputs = [
     autoComplete: "",
   },
   {
+    type: "select",
+    id: "workavailability",
+    name: "workavailability",
+    label: "Disponibilidad",
+    options: [
+      {
+        value: "fulltime",
+        text: "Fulltime",
+      },
+      {
+        value: "part-time",
+        text: "Part-time",
+      },
+      {
+        value: "freelancer",
+        text: "Freelancer",
+      },
+     
+    ]
+  },
+  {
+    type: "select",
+    id: "visa",
+    name: "visa",
+    label: "Visa",
+    options: [
+      {
+        value: "estados-unidos",
+        text: "Estados Unidos",
+      },
+      {
+        value: "union-europea",
+        text: "Union Europea",
+      },
+      {
+        value: "mi-país-de-residencia-actual",
+        text: "Mi país de residencia actual ",
+      },
+      {
+        value: "otros-paises",
+        text: "Otros Paises",
+      },
+     
+    ]
+  },
+  {
     titleHead: {
       show: true,
       title: "Cargo al que optas:",
@@ -56,91 +126,104 @@ export const stepOneInputs = [
     id: "DevFrontEnd",
     name: "DevFrontEnd",
     label: "Desarrollador Front End",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 1,
   },
   {
     type: "checkbox",
     id: "DevBackend",
     name: "DevBackend",
     label: "Desarrollador Backend",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value:2,
   },
   {
     type: "checkbox",
     id: "DevFullStackBackend",
     name: "DevFullStackBackend",
     label: "Desarrollador Full Stack",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 3
   },
   {
     type: "checkbox",
     id: "DesignerUXUI",
     name: "DesignerUXUI",
     label: "Diseñador UX/UI Research",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 4,
   },
   {
     type: "checkbox",
     id: "DesignerUI",
     name: "DesignerUI",
     label: "Diseñador UI",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 5
   },
   {
     type: "checkbox",
     id: "AnalystQA",
     name: "AnalystQA",
     label: "QA Tester",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 6
   },
   {
     type: "checkbox",
     id: "DevMobile",
     name: "DevMobile",
     label: "Desarrollador Mobile",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 7
   },
   {
     type: "checkbox",
     id: "DataAnalist",
     name: "DataAnalist",
     label: "Administrador de Base de Datos",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 8
   },
   {
     type: "checkbox",
     id: "DataScientist",
     name: "DataScientist",
     label: "Data Scientist o Especialista Machine Learning",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 9
   },
   {
     type: "checkbox",
     id: "ProductManager",
     name: "ProductManager",
     label: "Product Manager",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 10
   },
   {
     type: "checkbox",
     id: "DevOps",
     name: "DevOps",
     label: "DevOps o SRE",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 11
   },
   {
     type: "checkbox",
     id: "EnginerData",
     name: "EnginerData",
     label: "Ingeniero de Datos",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 12
   },
   {
     type: "checkbox",
     id: "Other",
     name: "Other",
     label: "Otra",
-    dataset: 'multipleCheck'
+    dataset: 'multipleCheck',
+    value: 13
   },
 ];
 export const stepTwoinputs = [
@@ -294,38 +377,137 @@ export const stepThreeInputs = [
       title: "Experiencia en cargos de Diseño UX y/o Diseño UI:",
     },
     type: 'radio',
-    id: 'experience',
-    name: 'experience',
+    id: 'experienceUI',
+    name: 'experienceUI',
     label: 'sin experiencia',
-    value: '0'
+    value: 0
   },
   {
     type: 'radio',
-    id: 'experience',
-    name: 'experience',
-    label: '0-1 año',
-    value: '0-1'
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '1 año',
+    value: 1
   },
   {
     type: 'radio',
-    id: 'experience',
-    name: 'experience',
-    label: '1-2 años',
-    value: '1-2'
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '2 años',
+    value: 2
   },
   {
     type: 'radio',
-    id: 'experience',
-    name: 'experience',
-    label: '2-4 años',
-    value: '2-4'
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '3 años',
+    value: 3
   },
   {
     type: 'radio',
-    id: 'experience',
-    name: 'experience',
-    label: '5+ años',
-    value: '5+'
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '4 años',
+    value: 4
+  },
+  {
+    type: 'radio',
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '5 años',
+    value: 5
+  },
+  {
+    titleHead: {
+      show: true,
+      title: "Experiencia en cargos de programación (Back End, Front End, Full Stack) ",
+    },
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: 'sin experiencia',
+    value: 0
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '1 año',
+    value: 1
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '2 años',
+    value: 2
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '3 años',
+    value: 3
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '4 años',
+    value: 4
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '5 años',
+    value: 5
+  },
+  {
+    titleHead: {
+      show: true,
+      title: "Experiencia en cargos de Machine Learning, Ciencia de Datos, BI o Data Análisis",
+    },
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: 'sin experiencia',
+    value: 0
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '1 año',
+    value: 1
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '2 años',
+    value: 2
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '3 años',
+    value: 3
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '4 años',
+    value: 4
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '5 años',
+    value: 5
   },
   {
     titleHead: {

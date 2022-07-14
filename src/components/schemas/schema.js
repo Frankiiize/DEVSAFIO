@@ -30,13 +30,12 @@ let jopSchema = basicSchema.shape({
     .required('ingresa tu ciudad'),
   country: Yup.string()
     .required('ingresa tu pais'),
-    multipleCheck: Yup.array().test({
-      message: 'debes seleccionar una casilla',
-      test: (value) => value.some((v) =>{
-       return v.value === true
-      }),
-    }
-    )
+    multipleCheck: Yup.array().min(1, 'debes seleccionar una casilla'),
+  workavailability: Yup.string()
+    .required('ingresa tu disponibilidad'),
+  visa: Yup.string()
+    .required('ingresa tu tipo residencia actual'),
+  multipleCheck: Yup.array().min(1, 'debes seleccionar una casilla')
 })
 
 let login = Yup.object().shape({
@@ -57,9 +56,22 @@ let postulate = Yup.object().shape({
   englishLevel: Yup.string()
     .required("Selecciona tu nivel de ingles"),
   otherTec: Yup.string()
-    
-
 });
+
+let postulate2 = Yup.object().shape({
+  cvUrl: Yup.string()
+    .required("Se recomienda subir como documento público en Google Drive o similar"),
+  urlLinkedin: Yup.string()
+    .required("Ingresa la url de tu perfil"),
+  projectDescription: Yup.string()
+    .required("Comentanos algún proyecto que hayas realizado"),
+  experienceUI: Yup.number()
+    .required("selecciona los años de experiencia"),
+  experienceDev: Yup.number()
+    .required("selecciona los años de experiencia"),
+  experienceData: Yup.number()
+    .required("selecciona los años de experiencia"),
+})
 
 
 export const registerSchema = () => {
@@ -74,6 +86,9 @@ export const loginSchema = () => {
 }
 export const postulateSchema = () => {
   return postulate;
+}
+export const postulateSchema2 = () => {
+  return postulate2;
 }
 
 

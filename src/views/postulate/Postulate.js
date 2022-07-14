@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { InputComponent } from "../../components/common/InputComponent";
-import { jopProfileShema as schema, postulateSchema, dinamicSchema } from "../../components/schemas/schema";
+import { jopProfileShema as schema, postulateSchema as schema2, postulateSchema2 as schema3 } from "../../components/schemas/schema";
 import { validate, handlerInputChangeCreator, parsedAutoFormValues } from "../../utils/utils";
 import { ButtonComponent } from "../../components/common/ButtonComponent";
 import { FormsCardContainer } from "../../layout/FormsCardContainer";
@@ -26,20 +26,42 @@ const JobProfile = () => {
   };
 
   const onSubmit = (values) =>{
-    const generatedFormParse = parsedAutoFormValues(formikStepTwo.values)
-    console.log(generatedFormParse)
-    console.log(formikStepOne.values)
-    console.log(formikStepTwo.values)
-    console.log(formikStepThree.values)
+
+    const data = {
+      gender: formikStepOne.values.gender,
+      phone_number: formikStepOne.values.number,
+      city: formikStepOne.values.city,
+      country: formikStepOne.values.country,
+      roles: formikStepOne.values.multipleCheck,
+      work_availability: formikStepOne.values.workavailability,
+      visa: formikStepOne.values.visa,
+      education_status: formikStepTwo.actualEducationSituation,
+      educational_level: formikStepTwo.values.maxEducationLevel,
+      english_level: formikStepTwo.values.englishLevel,
+      educational_experience: parsedAutoFormValues(formikStepTwo.values),
+      cv_url: formikStepThree.values.cvUrl,
+      linkedin_url: formikStepThree.values.urlLinkedin,
+      github_url: formikStepThree.values.github_url,
+      featured_project: formikStepThree.values.projectDescription,
+      dev_experience: formikStepThree.values.experience,
+    }
+
+    console.log(data)
+
   }
+
+
   const formikStepOne = useFormik({
     initialValues: {
       name: "",
       lastName: "",
+      gender: "",
       email: "",
       number: "",
       city: "",
       country: "",
+      workavailability:"",
+      visa:"",
       DevFrontEnd: false,
       DevBackend: false,
       DevFullStackBackend: false,
@@ -70,7 +92,7 @@ const JobProfile = () => {
       generatedFormDbLibsFrameworks: [],
       generatedFormTools: []
     },
-    validate: validate(postulateSchema),
+    validate: validate(schema2),
     onSubmit: onStepSubmit
   });
   const formikStepThree = useFormik({
@@ -79,7 +101,9 @@ const JobProfile = () => {
       urlLinkedin : "",
       urlPortafolio:"",
       projectDescription: "",
-      experience:"",
+      experienceUI:undefined,
+      experienceDev:undefined,
+      experienceData:undefined,
       responsabity:false,
       leader:false,
       flexible: false,
@@ -95,12 +119,13 @@ const JobProfile = () => {
       resilient:false,
 
     },
-    // validate: validate(postulateSchema),
+    validate: validate(schema3),
     onSubmit: onSubmit
   });
   const handleTxtChange = handlerInputChangeCreator(formikStepOne);
   const handleTxtChange2 = handlerInputChangeCreator(formikStepTwo);
   const handleTxtChange3 = handlerInputChangeCreator(formikStepThree);
+  console.log(formikStepOne.values)
   return (
     <>
       <div className="bg-primary min-h-screen flex flex-col ">
