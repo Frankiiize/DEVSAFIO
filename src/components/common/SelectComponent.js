@@ -30,39 +30,40 @@ con la funcion onChange obtendremos el valor de la opcion seleccionada y esta se
 formik y la validara con el schema de Yup.
 */
 
-const SelectComponent = ({options, onChange, formik}) => {
-  return(
+const SelectComponent = ({ options,  dataset, onChange, formik, label, name, id }) => {
+  return (
     <>
-    <div className="mb-2">
-      <label >{options.label}</label>
-    </div>
-    <select 
-      className=" appearance-none mb-2 block w-full text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat  border border-solid border-primary rounded  transition ease-in-out  m-0  focus:text-gray-700 focus:bg-white focus:border-accent focus:outline-none px-4 py-2"
-      name={options.name}
-      id={options.id}
-      onChange={onChange}
+      <div className="mb-2 text-lg">
+        <label >{label}</label>
+      </div>
+      <select
+        className=" appearance-none mb-2 block w-full text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat  border border-solid border-primary rounded  transition ease-in-out  m-0  focus:text-gray-700 focus:bg-white focus:border-accent focus:outline-none px-4 py-2"
+        name={name}
+        id={id}
+        onChange={onChange}
+        dataset={dataset}
       >
-        
+
         <option value={0}>Selecciona...</option>
         {
-          options.options.map((option) => (
-            <option 
-              key={`option-${option.value}`} 
+          options.map((option) => (
+            <option
+              key={`option-${option.value}`}
               value={option.value}
-              >
-                {option.text}
+            >
+              {option.text}
             </option>
           ))
         }
-    </select>
-    {
-    formik.touched[options.name] && !!formik.errors[options.name] && 
-      (
-        <div className="mb-2">
-          <span className="text-error">{formik.errors[options.name]}</span>
-        </div>
-      )
-    }
+      </select>
+    {/*   {
+        formik.touched[name] && !!formik.errors[name] &&
+        (
+          <div className="mb-2">
+            <span className="text-error">{formik.errors[name]}</span>
+          </div>
+        )
+      } */}
     </>
   );
 };

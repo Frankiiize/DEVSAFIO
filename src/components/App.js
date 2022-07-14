@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from '../routers/ProtectedRoute';
 import { Suspense } from 'react';
+import { ProviderAuth } from '../context/authContext'
 
 const DefaultLayout = React.lazy(() => import('../layout/DefaultLayout'));
 const SuspenseScreen = React.lazy(() => import('../components/loaders/SuspenseScreen'));
@@ -15,24 +16,26 @@ const Dashboard = React.lazy(() => import('../views/Dashboard'));
 
 function App() {
   return (
-    <Suspense fallback={<SuspenseScreen />}>
-      <Routes>
-        <Route path="/" element={<DefaultLayout />} >
-          <Route index element={<IndexPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-          <Route path='/jobProfile' element={<JobProfile />} />
-          <Route path='/postulate' element={<Postulate />} />
-          <Route path='/login' element={<Login />} />
-          <Route exact path='/dashboard' element={<ProtectedRoute />}>
-            <Route
-              index
-              name='Dashboard'
-              element={<Dashboard />} />
+    <ProviderAuth>
+      <Suspense fallback={<SuspenseScreen />}>
+        <Routes>
+          <Route path="/" element={<DefaultLayout />} >
+            <Route index element={<IndexPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/jobProfile' element={<JobProfile />} />
+            <Route path='/postulate' element={<Postulate />} />
+            <Route path='/login' element={<Login />} />
+            <Route exact path='/dashboard' element={<ProtectedRoute />}>
+              <Route
+                index
+                name='Dashboard'
+                element={<Dashboard />} />
+            </Route>
           </Route>
-        </Route>
 
-      </Routes>
-    </Suspense>
+        </Routes>
+      </Suspense>
+    </ProviderAuth>
 
   );
 }
