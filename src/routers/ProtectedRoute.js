@@ -1,11 +1,10 @@
-import React, { useState,useContext } from "react";
-import { Navigate, Outlet, Route } from "react-router-dom";
+import React, { useContext } from "react";
+import { Navigate, Outlet } from "react-router-dom";
 import { authContext } from "../context/authContext";
-import DefaultLayout from "../layout/DefaultLayout";
 
 
 export const ProtectedRoute = () => {
-  const { user , setUser } = useContext(authContext);
+  const { user } = useContext(authContext);
   return (
     user.logged 
       ? <>

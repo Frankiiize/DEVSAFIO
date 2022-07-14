@@ -36,7 +36,7 @@ export const ScrollToTop = () => {
         onClick={scrollToTop}
         className={classNames(
           isVisible ? 'opacity-100' : 'opacity-0',
-          'inline-flex items-center p-3 rounded-full shadow-sm text-white bg-primary transition-opacity hover:bg-primary focus:outline focus:ring-2 focus:ring-offset-2 focus:ring-primary'
+          'inline-flex items-center p-3 mb-4 rounded-full shadow-sm text-white bg-primary transition-opacity hover:bg-primary focus:outline focus:ring-2 focus:ring-offset-2 focus:ring-primary'
         )}
       >
         <BiArrowFromBottom className='h-6 w-6' aria-hidden='true' />

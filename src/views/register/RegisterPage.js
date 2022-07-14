@@ -30,12 +30,16 @@ const RegisterPage = () => {
     })
     .then((res) => {
       setFormLoading(false);
-      responseOnValidate(res, () => {handleLogin("TOKEN__FAKE",  res.data.user, ) })
+      responseOnValidate(res, () => handleLogin(res.token, res.data.user))
+      
       .then(() => {
-        setFormLoading(false);
-        navigate("../dashboard", { replace: true, state: res });
+        setFormLoading(false)
+        navigate("../postulate", { replace: true, state: res });
       })
-      .catch(() => setFormLoading(false))
+      .catch((err) => {
+        setFormLoading(false);
+        console.log(err);
+      })
     })
   }
   const formik = useFormik({
@@ -92,7 +96,7 @@ const RegisterPage = () => {
               </div>
               )
             : (
-              <div className=" container mb-16 flex justify-center w-full  items-center ">
+              <div className="mx-auto container mb-16 flex justify-center w-full  items-center ">
                 <SpinnerLoader />
               </div>
               )

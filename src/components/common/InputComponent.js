@@ -38,7 +38,7 @@ const inputConfig = [
 ]
 */
 
-const InputComponent = ({ type, dataset, radioValue, id, placeholder, name, label, formik, onChange, options, titleHead = { show: false, title: undefined } }) => {
+const InputComponent = ({ type, dataset, checkValue, radioValue, id, placeholder, name, label, formik, onChange, options, titleHead = { show: false, title: undefined } }) => {
   const checkRadioLayout = ["flex items-center mb-2 justify-start "];
   const checkInputClass = ["order-1 m-0 checkbox checkbox-primary checkbox-sm border border-gray-300 bg-white checked:border-accent focus:outline-none transition duration-200  bg-no-repeat bg-center bg-contain  cursor-pointer mr-2"];
   const radioInputClass = ["order- 1 m-0 radio radio-primary radio-sm mr-2 border border-gray-300 bg-white checked:border-accent focus:outline-none transition duration-300  bg-no-repeat bg-center bg-contain  cursor-pointer mr-2 "];
@@ -109,7 +109,7 @@ const InputComponent = ({ type, dataset, radioValue, id, placeholder, name, labe
                 name={name}
                 id={id}
                 onChange={onChange}
-                value={type === "radio" ? radioValue : type === "file" ? undefined : formik.values[name]}
+                value={type === "radio" ? radioValue : type === "file" ? undefined : type === 'checkbox' ? checkValue : formik.values[name]}
               />
             </>
         }

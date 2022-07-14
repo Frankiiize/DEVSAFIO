@@ -26,7 +26,7 @@ const Login = () => {
     })
       .then((res) => {
         responseOnValidate(res, () => {
-          handleLogin("TOKEN__FAKE", res.data.user);
+          handleLogin(res.token, res.data.user);
         })
           .then(() => {
             setFormLoading(false);
@@ -85,7 +85,7 @@ const Login = () => {
               </FormsCardContainer>
             </div>
           ) : (
-            <div className=" container mb-16 flex justify-center w-full  items-center ">
+            <div className="mx-auto container mb-16 flex justify-center w-full  items-center ">
               <SpinnerLoader />
             </div>
           )}
