@@ -65,7 +65,6 @@ export const getInputValue = (target, formik) => {
       return { [target.name]: target.checked }
     }
     if (target.type === 'radio') {
-      debugger
       return { [target.name]: parseInt(target.value)}
     }
     if (target.type === 'file') return { [target.name]: target.files[0] }
