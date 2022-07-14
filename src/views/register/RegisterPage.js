@@ -96,7 +96,7 @@ const RegisterPage = () => {
               </div>
               )
             : (
-              <div className=" container mb-16 flex justify-center w-full  items-center ">
+              <div className="mx-auto container mb-16 flex justify-center w-full  items-center ">
                 <SpinnerLoader />
               </div>
               )

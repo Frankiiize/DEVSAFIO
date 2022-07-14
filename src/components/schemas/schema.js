@@ -29,6 +29,8 @@ let jopSchema = basicSchema.shape({
     .required('ingresa tu ciudad'),
   country: Yup.string()
     .required('ingresa tu pais'),
+  gender: Yup.string()
+    .required('ingresa tu genero'),
   workavailability: Yup.string()
     .required('ingresa tu disponibilidad'),
   visa: Yup.string()
