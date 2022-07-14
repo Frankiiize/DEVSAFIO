@@ -1,5 +1,4 @@
 import * as Yup from "yup";
-const ACEPTED_PHOTOS = ['image/jpg','image/jpeg','image/png'];
 
 let basicSchema = Yup.object().shape({
   name: Yup.string()
@@ -30,7 +29,6 @@ let jopSchema = basicSchema.shape({
     .required('ingresa tu ciudad'),
   country: Yup.string()
     .required('ingresa tu pais'),
-    multipleCheck: Yup.array().min(1, 'debes seleccionar una casilla'),
   workavailability: Yup.string()
     .required('ingresa tu disponibilidad'),
   visa: Yup.string()

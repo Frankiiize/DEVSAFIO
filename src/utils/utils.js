@@ -77,9 +77,8 @@ export const getInputValue = (target, formik) => {
 }
 
 // CREATORS
-export const handlerInputChangeCreator = (formik) => ({ target }) => {
-  {  formik.setValues({ ...formik.values, ...getInputValue(target, formik) })}
-};
+export const handlerInputChangeCreator = (formik) => ({ target }) => {  formik.setValues({ ...formik.values, ...getInputValue(target, formik) })}
+;
 
 //PARSED FUNCTIONS (need parse the values of auto generated forms when its send to backend)
 export const parsedAutoFormValues = (values) => {

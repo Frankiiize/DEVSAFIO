@@ -18,7 +18,7 @@ const ButtonComponent = ({ type, style, label = 'enviar', onClick, }) => {
             ? secondaryClass
             : style === null
             ? undefined
-            : style == "primary-small"
+            : style === "primary-small"
             ? primarySmallClass
             : defaultBtnClass
         }

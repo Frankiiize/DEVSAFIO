@@ -1,17 +1,21 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import { InputComponent } from "../../components/common/InputComponent";
 import { jopProfileShema as schema, postulateSchema as schema2, postulateSchema2 as schema3 } from "../../components/schemas/schema";
 import { validate, handlerInputChangeCreator, parsedAutoFormValues } from "../../utils/utils";
 import { ButtonComponent } from "../../components/common/ButtonComponent";
 import { FormsCardContainer } from "../../layout/FormsCardContainer";
+import { SpinnerLoader } from "../../components/loaders/SpinnerLoader";
 //inputsConfig
 import { stepOneInputs, stepTwoinputs, stepThreeInputs, educationInputs, languageInputs, dbLibsFrameworkInputs, toolsInput } from "./data/inputsConfig";
 import { FormGrupLayout } from "./forms/FormGrupLayout";
 import { AutoFormGeneratedLayout } from "./forms/AutoFormGeneratedLayout";
-
+import { workProfile } from "../../services/users";
+import { responseOnValidate } from "../../utils/alerts";
+import { useNavigate } from "react-router-dom";
 const JobProfile = () => {
+  const navigate = useNavigate();
   const [formSteps, setFormSteps] = useState(1);
+  const [ formLoading, setFormLoading ] = useState(false);
   const [ educationFiels, setEducationFields ] = useState([educationInputs]);
   const [ languageFiels, setLanguageFields ] = useState([languageInputs]);
   const [ dbLibsFrameworkFields, setDbLibsFrameworkFields ] = useState([dbLibsFrameworkInputs]);
@@ -25,8 +29,8 @@ const JobProfile = () => {
     })
   };
 
-  const onSubmit = (values) =>{
-
+  const onSubmit = () =>{
+    setFormLoading(true);
     const data = {
       gender: formikStepOne.values.gender,
       phone_number: formikStepOne.values.number,
@@ -45,8 +49,21 @@ const JobProfile = () => {
       featured_project: formikStepThree.values.projectDescription,
       dev_experience: formikStepThree.values.experience,
     }
-
-    console.log(data)
+    workProfile({
+      work_profile: data
+    }).then((res) => {
+      responseOnValidate(res, () => {
+        setFormLoading(false);
+      }).then(() => {
+        navigate('/dashboard', {replace: true})
+      }).catch(err => {
+        console.log(err)
+        setFormLoading(false);
+      })
+    }).catch(err => {
+      console.log(err);
+      setFormLoading(false)
+    })
 
   }
 
@@ -127,7 +144,9 @@ const JobProfile = () => {
   const handleTxtChange3 = handlerInputChangeCreator(formikStepThree);
   console.log(formikStepOne.values)
   return (
-    <>
+      formLoading 
+      ? <SpinnerLoader />
+      : <>
       <div className="bg-primary min-h-screen flex flex-col ">
         <section className=" flex grow items-center">
           <div className="container mb-10  mx-auto mt-4">
@@ -170,6 +189,7 @@ const JobProfile = () => {
                       className="text-blue-600"
                       href={"https://www.linkedin.com/company/devsafio"}
                       target="_blank"
+                      rel="noreferrer" 
                     >
                       Linkedin
                     </a>
@@ -359,6 +379,7 @@ const JobProfile = () => {
         </section>
       </div>
     </>
+    
   );
 };
 

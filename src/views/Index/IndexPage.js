@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollToTop } from "../../components";
+import { ScrollToTop } from "../../components/scroll/scroll.js";
 import "animate.css";
 import hero from '../../assets/images/referencia.png'
 import reloj from '../../assets/images/timemachine.png'
@@ -7,7 +7,6 @@ import vineta from '../../assets/images/Diseño-sin-título-4-e1644350328646.p
 import bandera from '../../assets/images/accurate.png'
 import { SocialIcon } from 'react-social-icons';
 
-const DefaultLayout = React.lazy(() => import("./../../layout/DefaultLayout"));
 
 const IndexPage = () => {
   return (
@@ -34,7 +33,7 @@ const IndexPage = () => {
               </div>
             </div>
             <div className="object-contain w-full  max-w-md  animate__animated animate__fadeIn animate__delay-1s">
-              <img className="w-full" src={hero} />
+              <img className="w-full" src={hero} alt="hero"/>
             </div>
           </div>
         </div>
@@ -43,7 +42,7 @@ const IndexPage = () => {
 
      <div className='flex flex-row place-content-center justify-around content-center items-center  ' id="program">
        <div className="flex flex-col items-center box-border px-[15px]  p-3">
-          <img src={vineta} className='max-w-[64px] w-[128] h-[128]'/>
+          <img src={vineta} className='max-w-[64px] w-[128] h-[128]' alt="vineta"/>
             <h2 className="font-[700] text-[26px] mt-[20px] text-[#2c3142] mb-[9.5px]">
                   ¿Cómo funcionamos?
             </h2>
@@ -68,7 +67,7 @@ const IndexPage = () => {
         </div>
         <div className='flex flex-row place-content-center justify-around content-center'>
           <div className="flex flex-col items-center box-border px-[15px] w-full">
-            <img src={reloj} className='max-w-[64px] w-[128] h-[128]'/>
+            <img src={reloj} className='max-w-[64px] w-[128] h-[128]' alt="clock"/>
             <h2 className="font-[700] text-[26px] mt-[20px] text-[#2c3142] mb-[9.5px]">
               Aceleramos
             </h2>
@@ -77,7 +76,7 @@ const IndexPage = () => {
             </p>
           </div>
           <div className="flex flex-col items-center box-border px-[15px] w-full">
-            <img src={vineta} className='max-w-[64px] w-[128] h-[128]'/>
+            <img src={vineta} className='max-w-[64px] w-[128] h-[128]' alt="vineta"/>
             <h2 className="font-[700] text-[26px] mt-[20px] text-[#2c3142] mb-[9.5px] ">
               Acompañamos
             </h2>
@@ -88,7 +87,7 @@ const IndexPage = () => {
           </div>
         
           <div className="flex flex-col items-center box-border px-[15px] w-full">
-            <img src={bandera} className='max-w-[64px] w-[128] h-[128] '/>
+            <img src={bandera} className='max-w-[64px] w-[128] h-[128] ' alt="flag"/>
             <h2 className="font-[700] text-[26px] mt-[20px] text-[#2c3142] mb-[9.5px]">
               Potenciamos
             </h2>

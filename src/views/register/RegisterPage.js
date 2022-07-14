@@ -30,8 +30,10 @@ const RegisterPage = () => {
     })
     .then((res) => {
       setFormLoading(false);
-      responseOnValidate(res, () => setFormLoading(false))
+      responseOnValidate(res, () => handleLogin(res.token, res.data.user))
+      
       .then(() => {
+        setFormLoading(false)
         navigate("../postulate", { replace: true, state: res });
       })
       .catch((err) => {
