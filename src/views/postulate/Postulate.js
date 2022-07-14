@@ -145,7 +145,7 @@ const JobProfile = () => {
   console.log(formikStepOne.values)
   return (
       <div className="bg-primary  items-center containerWithHeader-min-height flex flex-col ">
-        <section className=" flex grow  items-center">
+        <section className="w-full flex grow">
         {
           !formLoading 
           ? (
@@ -205,8 +205,8 @@ const JobProfile = () => {
                       <li className={formSteps === 3 ? 'step step-accent text-white' : 'step step-primary' } data-content="3"></li>
                     </ul>
                   </div>
-                  <form className="p-1" /* onSubmit={formik2.handleSubmit} */>
-                    <div className="p-4">
+                  <form className="p-1">
+                    <div className="p-4 ">
                       {
                         formSteps === 1 && (
                           <>
