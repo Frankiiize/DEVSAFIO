@@ -44,7 +44,7 @@ const SelectComponent = ({ options,  dataset, onChange, formik, label, name, id 
         dataset={dataset}
       >
 
-        <option value={0}>Selecciona...</option>
+        <option value={""}>Selecciona...</option>
         {
           options.map((option) => (
             <option
