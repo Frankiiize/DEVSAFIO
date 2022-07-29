@@ -1,53 +1,5 @@
 export const stepOneInputs = [
   {
-    type: "text",
-    id: "name",
-    placeholder: "tu nombre",
-    name: "name",
-    label: "nombre",
-    autoComplete: "given-name",
-  },
-  {
-    type: "text",
-    id: "lastName",
-    placeholder: "tu apellido",
-    name: "lastName",
-    label: "Apellido",
-    autoComplete: "family-name",
-  },
-  {
-    type: "select",
-    id: "gender",
-    name: "gender",
-    label: "Genero",
-    options: [
-      {
-        value: "masculino",
-        text: "Masculino",
-      },
-      {
-        value: "femenino",
-        text: "Femenino",
-      },
-      {
-        value: "otro",
-        text: "Otro",
-      },
-      {
-        value: "prefiero-no-decirlo",
-        text: "Prefiero no decirlo",
-      },
-    ]
-  },
-  {
-    type: "email",
-    id: "email",
-    placeholder: "email@gmail.com",
-    name: "email",
-    label: "email",
-    autoComplete: "email",
-  },
-  {
     type: "tel",
     id: "number",
     placeholder: "numero telefono",
@@ -73,48 +25,26 @@ export const stepOneInputs = [
   },
   {
     type: "select",
-    id: "workavailability",
-    name: "workavailability",
-    label: "Disponibilidad",
+    id: "gender",
+    name: "gender",
+    label: "Genero",
     options: [
       {
-        value: "fulltime",
-        text: "Fulltime",
+        value: "masculino",
+        text: "Masculino",
       },
       {
-        value: "part-time",
-        text: "Part-time",
+        value: "femenino",
+        text: "Femenino",
       },
       {
-        value: "freelancer",
-        text: "Freelancer",
-      },
-     
-    ]
-  },
-  {
-    type: "select",
-    id: "visa",
-    name: "visa",
-    label: "Visa",
-    options: [
-      {
-        value: "estados-unidos",
-        text: "Estados Unidos",
+        value: "otro",
+        text: "Otro",
       },
       {
-        value: "union-europea",
-        text: "Union Europea",
+        value: "prefiero-no-decirlo",
+        text: "Prefiero no decirlo",
       },
-      {
-        value: "mi-país-de-residencia-actual",
-        text: "Mi país de residencia actual ",
-      },
-      {
-        value: "otros-paises",
-        text: "Otros Paises",
-      },
-     
     ]
   },
   {
@@ -234,40 +164,40 @@ export const stepTwoinputs = [
     type: "select",
     options: [ 
       {
-        value: "universidad_completa",
         text: "Universidad Completa",
+        value: "universidad_completa",
       },
       {
-        value: "universidad_inconpleta",
         text: "Universidad incompleta o en curso",
+        value: "universidad_inconpleta",
       },
       {
-        value: "instituto_profecional_CFT_completa",
         text: "Instituto Profecional o CFT completa",
+        value: "instituto_profecional_CFT_completa",
       },
       {
-        value: "institutoProfecinal_CFT_incompleta",
         text: "Instituto Profecional o CFT incompleta",
+        value: "institutoProfecinal_CFT_incompleta",
       },
       {
-        value: "educacion_media_completa",
         text: "Educacion media completa",
+        value: "educacion_media_completa",
       },
       {
-        value: "bootcamp_completo",
         text: "Bootcamp completo",
+        value: "bootcamp_completo",
       },
       {
-        value: "bootcamp_incompleto",
         text: "Bootcamp incompleto o en curso",
+        value: "bootcamp_incompleto",
       },
       {
-        value: "escolar_completa",
         text: "Escolar completa",
+        value: "escolar_completa",
       },
       {
-        value: "escolar_incompleta",
         text: "Escolar incompleta",
+        value: "escolar_incompleta",
       },
     ]
   },
@@ -278,16 +208,16 @@ export const stepTwoinputs = [
     type: "select",
     options: [ 
       {
-        value: "egresado",
         text: "Egresado",
+        value: "egresado",
       },
       {
-        value: "titulado",
         text: "Titulado",
+        value: "titulado",
       },
       {
-        value: "cursando",
-        text: "En curso",
+        text: "Cursando",
+        value: "en-curso",
       },
      
     ]
@@ -299,32 +229,32 @@ export const stepTwoinputs = [
     type: "select",
     options: [ 
       {
-        value: "ninguno",
         text: "Ninguno",
+        value: "ninguno",
       },
       {
-        value: "A1",
-        text: "Principiante A1",
+        text: "A1",
+        value: "principiante-a1",
       },
       {
-        value: "A2",
-        text: "Principiante A2",
+        text: "A2",
+        value: "principiante-a2",
       },
       {
-        value: "B1",
-        text: "Pre-Intermedio B1",
+        text: "B1",
+        value: "pre-intermedio-b1",
       },
       {
-        value: "B2",
-        text: "Intermedio B2",
+        text: "B2",
+        value: "intermedio-b2",
       },
       {
-        value: "C1",
-        text: "Intermedio avanzado C1",
+        text: "C1",
+        value: "intermedio-avanzado-c1",
       },
       {
-        value: "C2",
-        text: "Avanzado C2",
+        text: "C2",
+        value: "avanzado-c2",
       },
      
     ]
@@ -370,144 +300,6 @@ export const stepThreeInputs = [
     label: "Explícanos en detalle algún proyecto que te enorgullece ",
     placeholder: "Explícanos en detalle algún proyecto que te enorgullece ",
     autoComplete: "off",
-  },
-  {
-    titleHead: {
-      show: true,
-      title: "Experiencia en cargos de Diseño UX y/o Diseño UI:",
-    },
-    type: 'radio',
-    id: 'experienceUI',
-    name: 'experienceUI',
-    label: 'sin experiencia',
-    value: 0
-  },
-  {
-    type: 'radio',
-    id: 'experienceUI',
-    name: 'experienceUI',
-    label: '1 año',
-    value: 1
-  },
-  {
-    type: 'radio',
-    id: 'experienceUI',
-    name: 'experienceUI',
-    label: '2 años',
-    value: 2
-  },
-  {
-    type: 'radio',
-    id: 'experienceUI',
-    name: 'experienceUI',
-    label: '3 años',
-    value: 3
-  },
-  {
-    type: 'radio',
-    id: 'experienceUI',
-    name: 'experienceUI',
-    label: '4 años',
-    value: 4
-  },
-  {
-    type: 'radio',
-    id: 'experienceUI',
-    name: 'experienceUI',
-    label: '5 años',
-    value: 5
-  },
-  {
-    titleHead: {
-      show: true,
-      title: "Experiencia en cargos de programación (Back End, Front End, Full Stack) ",
-    },
-    type: 'radio',
-    id: 'experienceDev',
-    name: 'experienceDev',
-    label: 'sin experiencia',
-    value: 0
-  },
-  {
-    type: 'radio',
-    id: 'experienceDev',
-    name: 'experienceDev',
-    label: '1 año',
-    value: 1
-  },
-  {
-    type: 'radio',
-    id: 'experienceDev',
-    name: 'experienceDev',
-    label: '2 años',
-    value: 2
-  },
-  {
-    type: 'radio',
-    id: 'experienceDev',
-    name: 'experienceDev',
-    label: '3 años',
-    value: 3
-  },
-  {
-    type: 'radio',
-    id: 'experienceDev',
-    name: 'experienceDev',
-    label: '4 años',
-    value: 4
-  },
-  {
-    type: 'radio',
-    id: 'experienceDev',
-    name: 'experienceDev',
-    label: '5 años',
-    value: 5
-  },
-  {
-    titleHead: {
-      show: true,
-      title: "Experiencia en cargos de Machine Learning, Ciencia de Datos, BI o Data Análisis",
-    },
-    type: 'radio',
-    id: 'experienceData',
-    name: 'experienceData',
-    label: 'sin experiencia',
-    value: 0
-  },
-  {
-    type: 'radio',
-    id: 'experienceData',
-    name: 'experienceData',
-    label: '1 año',
-    value: 1
-  },
-  {
-    type: 'radio',
-    id: 'experienceData',
-    name: 'experienceData',
-    label: '2 años',
-    value: 2
-  },
-  {
-    type: 'radio',
-    id: 'experienceData',
-    name: 'experienceData',
-    label: '3 años',
-    value: 3
-  },
-  {
-    type: 'radio',
-    id: 'experienceData',
-    name: 'experienceData',
-    label: '4 años',
-    value: 4
-  },
-  {
-    type: 'radio',
-    id: 'experienceData',
-    name: 'experienceData',
-    label: '5 años',
-    value: 5
   },
   {
     titleHead: {
@@ -596,6 +388,55 @@ export const stepThreeInputs = [
     id: 'resilient',
     name: 'resilient',
     label: 'Resiliente/Perseverante',
+  },
+]
+
+const stepFourInputs = [
+  {
+    type: "select",
+    id: "workavailability",
+    name: "workavailability",
+    label: "Disponibilidad",
+    options: [
+      {
+        value: "fulltime",
+        text: "Fulltime",
+      },
+      {
+        value: "part-time",
+        text: "Part-time",
+      },
+      {
+        value: "freelancer",
+        text: "Freelancer",
+      },
+     
+    ]
+  },
+  {
+    type: "select",
+    id: "visa",
+    name: "visa",
+    label: "Visa",
+    options: [
+      {
+        value: "estados-unidos",
+        text: "Estados Unidos",
+      },
+      {
+        value: "union-europea",
+        text: "Union Europea",
+      },
+      {
+        value: "mi-país-de-residencia-actual",
+        text: "Mi país de residencia actual ",
+      },
+      {
+        value: "otros-paises",
+        text: "Otros Paises",
+      },
+     
+    ]
   },
 ]
 
@@ -702,14 +543,13 @@ export const educationInputs = [
     dataset: 'generatedForm',
   },
   {
-    type: "text",
+    type: "date",
     id: "anoGraduacion",
     name: "anoGraduacion",
     label: "Año de graduación",
     dataset: 'generatedForm',
   },
 ]
-
 export const dbLibsFrameworkInputs = [
   {
     label: "¿Bases de Datos, Librerías y Frameworks ?",
@@ -971,107 +811,107 @@ export const toolsInput = [
     dataset: 'generatedFormTools',
     options: [ 
       {
-        value: "adobeIllustrator",
+        value: 1,
         text: "Adobe Illustrator",
       },
       {
-        value: "adobePhotoShop",
+        value: 2,
         text: "Adobe PhotoShop",
       },
       {
-        value: "adobeXD",
+        value: 3,
         text: "Adobe XD",
       },
       {
-        value: "AWS",
+        value: 4,
         text: "AWS",
       },
       {
-        value: "docker",
+        value: 5,
         text: "Docker",
       },
       {
-        value: "figma",
+        value: 6,
         text: "Figma",
       },
       {
-        value: "git",
+        value: 7,
         text: "Git",
       },
       {
-        value: "googleAnalytics",
+        value: 8,
         text: "Google Analytics",
       },
       {
-        value: "googleCloudPlatform",
+        value: 9,
         text: "Google Cloud Platform",
       },
       {
-        value: "googleDataStudio",
+        value: 10,
         text: "Google Data Studio",
       },
       {
-        value: "invision",
+        value: 11,
         text: "Invision",
       },
       {
-        value: "inVisionStudio",
+        value: 12,
         text: "inVision Studio",
       },
       {
-        value: "jira",
+        value: 13,
         text: "Jira",
       },
       {
-        value: "kubermetes",
+        value: 14,
         text: "Kubermetes",
       },
       {
-        value: "marvel",
+        value: 15,
         text: "Marvel",
       },
       {
-        value: "microsoftExcel",
+        value: 16,
         text: "Microft Excel",
       },
       {
-        value: "microsoftAzure",
+        value: 17,
         text: "Microft Azure",
       },
       {
-        value: "miro",
+        value: 18,
         text: "Miro",
       },
       {
-        value: "powerBI",
+        value: 19,
         text: "Power BI",
       },
       {
-        value: "proto.io",
+        value: 20,
         text: "Proto.io",
       },
       {
-        value: "qlik",
+        value: 21,
         text: "Qlik",
       },
       {
-        value: "sketch",
+        value: 22,
         text: "Sketch",
       },
       {
-        value: "SPSS",
+        value: 23,
         text: "SPSS",
       },
       {
-        value: "tableau",
+        value: 24,
         text: "Tableau",
       },
       {
-        value: "unity3D",
+        value: 25,
         text: "Unity 3D",
       },
       {
-        value: "unrealEngine",
+        value: 26,
         text: "Unreal Engine",
       },
       {
@@ -1110,6 +950,7 @@ export const toolsInput = [
     ]
   },
 ]
+
 export const languageInputs = [
   {
     label: "¿Qué lenguajes manejas?",
@@ -1119,140 +960,140 @@ export const languageInputs = [
     dataset: 'generatedFormLanguages',
     options: [ 
       {
-        value: "apl",
         text: "APL",
+        value: 1,
       },
       {
-        value: "assembly",
         text: "Assembly",
+        value: 2,
       },
       {
-        value: "bash-shell",
         text: "Bash/Shell",
+        value: 3,
       },
       {
-        value: "c",
         text: "C",
+        value: 4,
       },
       {
-        value: "c#",
         text: "C#",
+        value: 5,
       },
       {
-        value: "c++",
         text: "C++",
+        value: 6,
       },
       {
-        value: "clojure",
         text: "Clojure",
+        value: 7,
       },
       {
-        value: "cobol",
         text: "COBOL",
+        value: 8,
       },
       {
-        value: "crystal",
         text: "Crystal",
+        value: 9,
       },
       {
-        value: "dart",
         text: "Dart",
+        value: 10,
       },
       {
-        value: "delphi",
         text: "Delphi",
+        value: 11,
       },
       {
-        value: "erlang",
         text: "Erlang",
+        value: 12,
       },
       {
-        value: "f#",
         text: "F#",
+        value: 13,
       },
       {
-        value: "go",
         text: "Go",
+        value: 14,
       },
       {
-        value: "groovy",
         text: "Groovy",
+        value: 15,
       },
       {
-        value: "haskell",
         text: "Haskell",
+        value: 16,
       },
       {
-        value: "html-css",
         text: "HTML/CSS",
+        value: 17,
       },
       {
-        value: "java",
         text: "Java",
+        value: 18,
       },
       {
-        value: "javaScript",
         text: "JavaScript",
+        value: 19,
       },
       {
-        value: "julia",
         text: "Julia",
+        value: 20,
       },
       {
-        value: "kotlin",
         text: "Kotlin",
+        value: 21,
       },
       {
-        value: "lisp",
         text: "LISP",
+        value: 22,
       },
       {
-        value: "objetive-c",
         text: "Objetive-C",
+        value: 23,
       },
       {
-        value: "perl",
         text: "Perl",
+        value: 24,
       },
       {
-        value: "php",
         text: "PHP",
+        value: 25,
       },
       {
-        value: "powerShell",
         text: "PoweShell",
+        value: 26,
       },
       {
-        value: "python",
         text: "Python",
+        value: 27,
       },
       {
-        value: "r",
         text: "R",
+        value: 28,
       },
       {
-        value: "ruby",
         text: "Ruby",
+        value: 29,
       },
       {
-        value: "rust",
         text: "Rust",
+        value: 30,
       },
       {
-        value: "scala",
         text: "Scala",
+        value: 31,
       },
       {
-        value: "swift",
         text: "Swift",
+        value: 32,
       },
       {
-        value: "typeScript",
         text: "TypeScript",
+        value: 33,
       },
       {
-        value: "vba",
         text: "VBA",
+        value: 34,
       },
     ]
   },
@@ -1287,3 +1128,151 @@ export const languageInputs = [
   },
 ]
 
+
+
+export const desingExperienceInputs = [
+  {
+    titleHead: {
+      show: true,
+      title: "Experiencia en cargos de Diseño UX y/o Diseño UI:",
+    },
+    type: 'radio',
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: 'sin experiencia',
+    value: 0
+  },
+  {
+    type: 'radio',
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '1 año',
+    value: 1
+  },
+  {
+    type: 'radio',
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '2 años',
+    value: 2
+  },
+  {
+    type: 'radio',
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '3 años',
+    value: 3
+  },
+  {
+    type: 'radio',
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '4 años',
+    value: 4
+  },
+  {
+    type: 'radio',
+    id: 'experienceUI',
+    name: 'experienceUI',
+    label: '5 años',
+    value: 5
+  },
+]
+
+export const programingExperienceInputs = [
+  {
+    titleHead: {
+      show: true,
+      title: "Experiencia en cargos de programación (Back End, Front End, Full Stack) ",
+    },
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: 'sin experiencia',
+    value: 0
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '1 año',
+    value: 1
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '2 años',
+    value: 2
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '3 años',
+    value: 3
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '4 años',
+    value: 4
+  },
+  {
+    type: 'radio',
+    id: 'experienceDev',
+    name: 'experienceDev',
+    label: '5 años',
+    value: 5
+  },
+]
+
+export const machineDataScienceInputs = [
+  {
+    titleHead: {
+      show: true,
+      title: "Experiencia en cargos de Machine Learning, Ciencia de Datos, BI o Data Análisis",
+    },
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: 'sin experiencia',
+    value: 0
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '1 año',
+    value: 1
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '2 años',
+    value: 2
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '3 años',
+    value: 3
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '4 años',
+    value: 4
+  },
+  {
+    type: 'radio',
+    id: 'experienceData',
+    name: 'experienceData',
+    label: '5 años',
+    value: 5
+  },
+]

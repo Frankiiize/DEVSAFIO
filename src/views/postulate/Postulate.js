@@ -1,12 +1,12 @@
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { jopProfileShema as schema, postulateSchema as schema2, postulateSchema2 as schema3 } from "../../components/schemas/schema";
 import { validate, handlerInputChangeCreator, parsedAutoFormValues } from "../../utils/utils";
 import { ButtonComponent } from "../../components/common/ButtonComponent";
 import { FormsCardContainer } from "../../layout/FormsCardContainer";
 import { SpinnerLoader } from "../../components/loaders/SpinnerLoader";
 //inputsConfig
-import { stepOneInputs, stepTwoinputs, stepThreeInputs, educationInputs, languageInputs, dbLibsFrameworkInputs, toolsInput } from "./data/inputsConfig";
+import { stepOneInputs, stepTwoinputs, stepThreeInputs, educationInputs, languageInputs, dbLibsFrameworkInputs, toolsInput, programingExperienceInputs, desingExperienceInputs } from "./data/inputsConfig";
 import { FormGrupLayout } from "./forms/FormGrupLayout";
 import { AutoFormGeneratedLayout } from "./forms/AutoFormGeneratedLayout";
 import { workProfile } from "../../services/users";
@@ -20,6 +20,7 @@ const JobProfile = () => {
   const [ languageFiels, setLanguageFields ] = useState([languageInputs]);
   const [ dbLibsFrameworkFields, setDbLibsFrameworkFields ] = useState([dbLibsFrameworkInputs]);
   const [ toolsFields, setToolFields ] = useState([toolsInput]);
+  const [ workingExperience, setWorkingExperience ] = useState([]);
 
   const onStepSubmit = () => {
     setFormSteps(() => formSteps + 1)
@@ -70,27 +71,27 @@ const JobProfile = () => {
 
   const formikStepOne = useFormik({
     initialValues: {
-      name: "",
-      lastName: "",
-      gender: "",
-      email: "",
       number: "",
       city: "",
       country: "",
-      workavailability:"",
-      visa:"",
+      gender: "",
+
       DevFrontEnd: false,
       DevBackend: false,
       DevFullStackBackend: false,
+      AnalystQA: false,
+      DataAnalist: false,
+      DevMobile: false,
+
       DesignerUXUI: false,
       DesignerUI: false,
-      AnalystQA: false,
-      DevMobile: false,
-      DataAnalist: false,
+      
       DataScientist: false,
+      EnginerData: false,
+      
+      
       ProductManager: false,
       DevOps: false,
-      EnginerData: false,
       Other: false,
       multipleCheck: []
     },
@@ -139,10 +140,33 @@ const JobProfile = () => {
     validate: validate(schema3),
     onSubmit: onSubmit
   });
+
+
   const handleTxtChange = handlerInputChangeCreator(formikStepOne);
   const handleTxtChange2 = handlerInputChangeCreator(formikStepTwo);
   const handleTxtChange3 = handlerInputChangeCreator(formikStepThree);
-  console.log(formikStepOne.values)
+
+  useEffect(() => {
+    console.log('se activo una casilla')
+    const workingExperience = () => {
+      const { DevBackend, DevFrontEnd , DevFullStackBackend, AnalystQA, DataAnalist ,DevMobile } = formikStepOne.values;
+      const { DesignerUI, DesignerUXUI } = formikStepOne.values;
+      const programingExperience = [DevBackend,DevFrontEnd,DevFullStackBackend,AnalystQA,DataAnalist,DevMobile,
+      ]
+      const designingExperience = [ DesignerUI, DesignerUXUI ];
+  
+      const isProgramingExp = programingExperience.some((e) => e === true )
+      const isDesigningExp = designingExperience.some((e) => e === true )
+  
+      if(isProgramingExp) {
+        setWorkingExperience(programingExperienceInputs);
+      }
+    }
+    workingExperience()
+  },[formikStepOne.values.multipleCheck.length])
+
+  console.log(workingExperience)
+
   return (
       <div className="bg-primary  items-center containerWithHeader-min-height flex flex-col ">
         <section className="w-full flex grow">
@@ -200,8 +224,10 @@ const JobProfile = () => {
                   )}
                   <div className="steps-horizontal w-full mt-10">
                     <ul className="steps">
-                      <li className={formSteps === 1 ? 'step step-accent after:text-white' : 'step step-primary' }data-content={formSteps === 2 ? '✓' : 1}></li>
-                      <li className={formSteps === 2 ? 'step step-accent' : 'step step-primary' }data-content={formSteps === 3 ? '✓' : 2}></li>
+                      <li className={formSteps === 1 ? 'step step-accent after:text-white' : 'step step-primary' }data-content={formSteps >= 2  ? '✓' : 1}>
+                        <button onClick={(ev) => console.log(ev)}></button>
+                      </li>
+                      <li className={formSteps === 2 ? 'step step-accent' : 'step step-primary' }data-content={formSteps >= 3 ? '✓' : 2}></li>
                       <li className={formSteps === 3 ? 'step step-accent text-white' : 'step step-primary' } data-content="3"></li>
                     </ul>
                   </div>
@@ -351,11 +377,21 @@ const JobProfile = () => {
                       }
                       {
                         formSteps === 3 && (
+                          <>
                           <FormGrupLayout 
                             inputs={stepThreeInputs}
                             stateFormik={formikStepThree}
                             onChange={handleTxtChange3}
                           />
+                          {
+                          
+                              <FormGrupLayout 
+                                inputs={workingExperience}
+                                stateFormik={formikStepThree}
+                                onChange={handleTxtChange3}
+                                />
+                          }
+                          </>
                         )
                       }
                     </div>
