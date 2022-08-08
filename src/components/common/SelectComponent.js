@@ -30,7 +30,9 @@ con la funcion onChange obtendremos el valor de la opcion seleccionada y esta se
 formik y la validara con el schema de Yup.
 */
 
-const SelectComponent = ({ options,  dataset, onChange, formik, label, name, id }) => {
+const SelectComponent = ({ options,  dataset, formGrup, indexPrincipal, onChange, formik, label, name, id }) => {
+  const currentValue = formik.values[name] 
+  const currentFormGrupValue = formGrup ?  formik.values[dataset][indexPrincipal].formValues[name] : '';
   return (
     <>
       <div className="mb-2 text-lg">
@@ -44,7 +46,7 @@ const SelectComponent = ({ options,  dataset, onChange, formik, label, name, id 
         dataset={dataset}
       >
 
-        <option value={""}>Selecciona...</option>
+        <option value={""}>{currentValue ? currentValue : formGrup ? currentFormGrupValue : 'Selecciona...'}</option>
         {
           options.map((option) => (
             <option

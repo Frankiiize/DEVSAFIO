@@ -51,7 +51,44 @@ let postulate = Yup.object().shape({
     .required("Selecciona tu situación educativa actual"),
   englishLevel: Yup.string()
     .required("Selecciona tu nivel de ingles"),
-  otherTec: Yup.string()
+  otherTec: Yup.string(),
+  generatedForm: Yup.array().of(
+    Yup.object().shape({
+      formValues : Yup.object().shape({
+        institucion: Yup.string().required('Escribe el nombre de la institución'),
+        educacion: Yup.string().required('Selecciona una opción'),
+        area: Yup.string().required('Selecciona una opción'),
+        certificado: Yup.string().required('¿Que certificado obtuviste?'),
+        anoGraduacion:  Yup.string().required('¿En que fecha obtuviste el certificado?')
+      })
+    })
+  ).min(1, 'Completa estos datos'),
+  generatedFormLanguages: Yup.array().of(
+    Yup.object().shape({
+      formValues : Yup.object().shape({
+        programingLanguajes: Yup.number().integer().required('Selecciona una opción'),
+        level: Yup.number().integer().required('Selecciona una opción'),
+      })
+    })
+  ).min(1, 'Completa estos datos'),
+  generatedFormDbLibsFrameworks: Yup.array().of(
+    Yup.object().shape({
+      formValues : Yup.object().shape({
+        dbLibsFrameworks: Yup.string().required('Selecciona una opción'),
+        level: Yup.number().integer().required('Selecciona una opción'),
+      })
+    })
+  ).min(1, 'Completa estos datos'),
+  generatedFormTools: Yup.array().of(
+    Yup.object().shape({
+      formValues : Yup.object().shape({
+        tools:  Yup.number().integer().required('Selecciona una opción'),
+        level: Yup.number().integer().required('Selecciona una opción'),
+      })
+    })
+  ).min(1, 'Completa estos datos'),
+  
+  otherTec : Yup.string()
 });
 
 let postulate2 = Yup.object().shape({

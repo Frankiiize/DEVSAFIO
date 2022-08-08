@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputComponent } from '../../../components/common/InputComponent';
 
-export const AutoFormGeneratedLayout = ({inputs,indexPrincipal, stateFormik , onChange, slice = {start: undefined, end: undefined}}) => {
+export const AutoFormGeneratedLayout = ({inputs, id , indexPrincipal, stateFormik , onChange, slice = {start: undefined, end: undefined}}) => {
   return (
     <>
       {
@@ -17,7 +17,9 @@ export const AutoFormGeneratedLayout = ({inputs,indexPrincipal, stateFormik , on
             formik={stateFormik}
             onChange={onChange}
             options={item.options}
-            dataset={`${item.dataset}-${indexPrincipal}`}
+            dataset={`${item.dataset}`}
+            formGrup={item.isFormGroup}
+            indexPrincipal={indexPrincipal}
           />
         ))
       }

@@ -391,8 +391,12 @@ export const stepThreeInputs = [
   },
 ]
 
-const stepFourInputs = [
+export const stepFourInputs = [
   {
+    titleHead: {
+      show: true,
+      title: "¿Qué disponibilidad laboral buscas?",
+    },
     type: "select",
     id: "workavailability",
     name: "workavailability",
@@ -412,6 +416,38 @@ const stepFourInputs = [
       },
      
     ]
+  },
+  {
+    type: "textarea",
+    id: "idealWork",
+    name: "idealWork",
+    label: "Déjanos una breve descripción con respecto tu trabajo ideal",
+    placeholder: "escribe aqui"
+  },
+  {
+    titleHead: {
+      show: true,
+      title: "¿Qué describe mejor tu situación actual?",
+    },
+    type: 'radio',
+    id: 'actualSituation',
+    name: 'actualSituation',
+    label: 'Quiero trabajo desde mi ciudad actual',
+    value: 0
+  },
+  {
+    type: 'radio',
+    id: 'actualSituation1',
+    name: 'actualSituation',
+    label: 'Estoy disponible a migrar de ciudad dentro de mi país',
+    value: 1
+  },
+  {
+    type: 'radio',
+    id: 'actualSituation2',
+    name: 'actualSituation',
+    label: 'Estoy disponible para migrar a otro país',
+    value: 2
   },
   {
     type: "select",
@@ -447,14 +483,18 @@ export const educationInputs = [
     id: "institucion",
     name: "institucion",
     label: "Nombre Institucion:",
-    dataset: 'generatedForm'
+    dataset: 'generatedForm',
+    institucion: '',
+    isFormGroup: true
   },
   {
     label: "Tipo",
     name: "educacion",
     id: "educacion",
     type: "select",
+    educacion: '',
     dataset: 'generatedForm',
+    isFormGroup: true,
     options: [
       {
         value: "Universidad",
@@ -481,7 +521,9 @@ export const educationInputs = [
     name: "area",
     id: "area",
     type: "select",
+    area: '',
     dataset: 'generatedForm',
+    isFormGroup: true,
     options: [
       {
         value: "informatica/sistema/computacion",
@@ -539,24 +581,29 @@ export const educationInputs = [
     type: "text",
     id: "certificado",
     name: "certificado",
+    certificado: '',
     label: "Nombre carrera/certificado",
     dataset: 'generatedForm',
+    isFormGroup: true
   },
   {
     type: "date",
     id: "anoGraduacion",
     name: "anoGraduacion",
+    anoGraduacion: '',
     label: "Año de graduación",
     dataset: 'generatedForm',
+    isFormGroup: true
   },
 ]
 export const dbLibsFrameworkInputs = [
   {
-    label: "¿Bases de Datos, Librerías y Frameworks ?",
+    label: "Herramienta",
     id: "dbLibsFrameworks",
     name: "dbLibsFrameworks",
     type: "select",
     dataset: 'generatedFormDbLibsFrameworks',
+    isFormGroup: true,
     options: [ 
       {
         value: "cassandra",
@@ -773,11 +820,12 @@ export const dbLibsFrameworkInputs = [
     ]
   },
   {
-    label: "¿En qué nivel? ",
+    label: "Nivel",
     id: "level",
     name: "level",
     type: "select",
     dataset: 'generatedFormDbLibsFrameworks',
+    isFormGroup: true,
     options: [ 
       {
         value: 1,
@@ -809,6 +857,7 @@ export const toolsInput = [
     name: "tools",
     type: "select",
     dataset: 'generatedFormTools',
+    isFormGroup: true,
     options: [ 
       {
         value: 1,
@@ -915,7 +964,7 @@ export const toolsInput = [
         text: "Unreal Engine",
       },
       {
-        value: "zeplin",
+        value: 27,
         text: "Zeplin",
       },
     ]
@@ -926,6 +975,7 @@ export const toolsInput = [
     name: "level",
     type: "select",
     dataset: 'generatedFormTools',
+    isFormGroup: true,
     options: [ 
       {
         value: 1,
@@ -953,11 +1003,12 @@ export const toolsInput = [
 
 export const languageInputs = [
   {
-    label: "¿Qué lenguajes manejas?",
+    label: "Lenguajes",
     id: "programingLanguajes",
     name: "programingLanguajes",
     type: "select",
     dataset: 'generatedFormLanguages',
+    isFormGroup: true,
     options: [ 
       {
         text: "APL",
@@ -1098,11 +1149,12 @@ export const languageInputs = [
     ]
   },
   {
-    label: "¿En qué nivel? ",
+    label: "Nivel",
     id: "level",
     name: "level",
     type: "select",
     dataset: 'generatedFormLanguages',
+    isFormGroup: true,
     options: [ 
       {
         value: 1,
@@ -1144,35 +1196,35 @@ export const desingExperienceInputs = [
   },
   {
     type: 'radio',
-    id: 'experienceUI',
+    id: 'experienceUI1',
     name: 'experienceUI',
     label: '1 año',
     value: 1
   },
   {
     type: 'radio',
-    id: 'experienceUI',
+    id: 'experienceUI2',
     name: 'experienceUI',
     label: '2 años',
     value: 2
   },
   {
     type: 'radio',
-    id: 'experienceUI',
+    id: 'experienceUI3',
     name: 'experienceUI',
     label: '3 años',
     value: 3
   },
   {
     type: 'radio',
-    id: 'experienceUI',
+    id: 'experienceUI4',
     name: 'experienceUI',
     label: '4 años',
     value: 4
   },
   {
     type: 'radio',
-    id: 'experienceUI',
+    id: 'experienceUI5',
     name: 'experienceUI',
     label: '5 años',
     value: 5
@@ -1193,35 +1245,35 @@ export const programingExperienceInputs = [
   },
   {
     type: 'radio',
-    id: 'experienceDev',
+    id: 'experienceDev2',
     name: 'experienceDev',
     label: '1 año',
     value: 1
   },
   {
     type: 'radio',
-    id: 'experienceDev',
+    id: 'experienceDev3',
     name: 'experienceDev',
     label: '2 años',
     value: 2
   },
   {
     type: 'radio',
-    id: 'experienceDev',
+    id: 'experienceDev4',
     name: 'experienceDev',
     label: '3 años',
     value: 3
   },
   {
     type: 'radio',
-    id: 'experienceDev',
+    id: 'experienceDev5',
     name: 'experienceDev',
     label: '4 años',
     value: 4
   },
   {
     type: 'radio',
-    id: 'experienceDev',
+    id: 'experienceDev6',
     name: 'experienceDev',
     label: '5 años',
     value: 5
@@ -1242,35 +1294,35 @@ export const machineDataScienceInputs = [
   },
   {
     type: 'radio',
-    id: 'experienceData',
+    id: 'experienceData1',
     name: 'experienceData',
     label: '1 año',
     value: 1
   },
   {
     type: 'radio',
-    id: 'experienceData',
+    id: 'experienceData2',
     name: 'experienceData',
     label: '2 años',
     value: 2
   },
   {
     type: 'radio',
-    id: 'experienceData',
+    id: 'experienceData3',
     name: 'experienceData',
     label: '3 años',
     value: 3
   },
   {
     type: 'radio',
-    id: 'experienceData',
+    id: 'experienceData4',
     name: 'experienceData',
     label: '4 años',
     value: 4
   },
   {
     type: 'radio',
-    id: 'experienceData',
+    id: 'experienceData5',
     name: 'experienceData',
     label: '5 años',
     value: 5
