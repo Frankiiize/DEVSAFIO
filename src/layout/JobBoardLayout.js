@@ -14,7 +14,8 @@ function JobBoardLayout() {
   useEffect(() => {
     setJopLoading(true)
     function getData() {
-      fetch('https://www.getonbrd.com/api/v0/tags/full-stack/jobs?per_page=10&page=1&expand=["company","tags"]')
+      //fetch('https://www.getonbrd.com/api/v0/tags/full-stack/jobs?per_page=10&page=1&expand=["company","tags"]')
+      fetch('https://devsafio-api-staging.herokuapp.com/getonboard/categories/programming/jobs')
         .then(res => res.json())
         .then(data => {
 
