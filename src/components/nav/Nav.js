@@ -35,7 +35,6 @@ const Nav = () => {
   const location = useLocation();
   const logout = () => {
     handleLogOut();
-    // logout().then((res) => console.log(res))
   }
   return (
     <Disclosure as="nav" className="bg-primary px-5 md:px-10">

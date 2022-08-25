@@ -18,7 +18,6 @@ const Login = () => {
   let navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    console.log(values);
     setFormLoading(true);
     loginService({
       email: formik.values.email,

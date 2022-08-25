@@ -9,7 +9,6 @@ const headers = {
 const request = async function (options) {
   let localStorageUser = JSON.parse(window.localStorage.getItem("user"));
   let reqOptions = { ...options, ...headers };
-  debugger
   if (localStorageUser) {
     const authToken = { Authorization: `${localStorageUser.token}` };
     reqOptions.headers = { ...reqOptions.headers, ...authToken };
