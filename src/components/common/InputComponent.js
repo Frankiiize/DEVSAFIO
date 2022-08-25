@@ -47,6 +47,7 @@ const InputComponent = ({ type, formGrup, indexPrincipal, dataset, checkValue, r
   const showUiFileInput = () => {
     inputRef.current.click();
   }
+  
   return (
     <>
       {titleHead.show ? <h1 className="pt-5 pb-2 text-2xl">{titleHead.title}</h1> : null}
@@ -111,7 +112,7 @@ const InputComponent = ({ type, formGrup, indexPrincipal, dataset, checkValue, r
                 name={name}
                 id={id}
                 onChange={onChange}
-                checked={(type === 'checkbox' || type === 'radio') && formik.values[name] ? true : false} 
+                checked={(type === 'checkbox' || type === 'radio' && formik.values[name] === radioValue ) && !!formik.values[name]  ? true : false} 
                 value={type === "radio" ? radioValue : type === "file" ? undefined : type === 'checkbox' ? checkValue  : formGrup ? formik.values[dataset][indexPrincipal].formValues[name] : formik.values[name]}
               />
             </>

@@ -32,7 +32,7 @@ formik y la validara con el schema de Yup.
 
 const SelectComponent = ({ options,  dataset, formGrup, indexPrincipal, onChange, formik, label, name, id }) => {
   const currentValue = formik.values[name] 
-  const currentFormGrupValue = formGrup ?  formik.values[dataset][indexPrincipal].formValues[name] : '';
+  const currentFormGrupValue = formGrup ?  formik.values[dataset][indexPrincipal].formValues[name] : false;
   return (
     <>
       <div className="mb-2 text-lg">
@@ -46,7 +46,7 @@ const SelectComponent = ({ options,  dataset, formGrup, indexPrincipal, onChange
         dataset={dataset}
       >
 
-        <option value={""}>{currentValue ? currentValue : formGrup ? currentFormGrupValue : 'Selecciona...'}</option>
+        <option value={""}>{currentValue ? currentValue : formGrup ? currentFormGrupValue:  'Selecciona...'  }</option>
         {
           options.map((option) => (
             <option

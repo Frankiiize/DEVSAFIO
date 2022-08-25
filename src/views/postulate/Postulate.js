@@ -36,14 +36,14 @@ const initialFormValues =  (formStateName) => {
 
 const JobProfile = () => {
   const navigate = useNavigate();
-  const [formSteps, setFormSteps] = useState({step: 2 , totalSteps: 4});
+  const [formSteps, setFormSteps] = useState({step: 1 , totalSteps: 4});
   const [ formLoading, setFormLoading ] = useState(false);
   // const [ languageFiels, setLanguageFields ] = useState([languageInputs]);
   // const [ dbLibsFrameworkFields, setDbLibsFrameworkFields ] = useState([dbLibsFrameworkInputs]);
   // const [ toolsFields, setToolFields ] = useState([toolsInput]);
   const [ workingExperience, setWorkingExperience ] = useState([]);
 
-
+  
 
   const onStepSubmit = () => {
 
@@ -61,25 +61,43 @@ const JobProfile = () => {
       phone_number: formikStepOne.values.number,
       city: formikStepOne.values.city,
       country: formikStepOne.values.country,
-      roles: formikStepOne.values.multipleCheck,
+      //roles: formikStepOne.values.multipleCheck,
 
       education_status: formikStepTwo.actualEducationSituation,
       educational_level: formikStepTwo.values.maxEducationLevel,
       english_level: formikStepTwo.values.englishLevel,
-      educational_experience: parsedAutoFormValues(formikStepTwo.values),
+      educational_experience: formikStepTwo.values.generatedForm.map(e => e.formValues),
+      databases: formikStepTwo.values.generatedFormDbLibsFrameworks.map(e => e.formValues),
+      dev_languages: formikStepTwo.values.generatedFormLanguages.map(e => e.formValues),
+      dev_tools: formikStepTwo.values.generatedFormTools.map(e => e.formValues),
+      
+
+      other_technologies_comment: formikStepTwo.values.otherTec,
 
       cv_url: formikStepThree.values.cvUrl,
       linkedin_url: formikStepThree.values.urlLinkedin,
       github_url: formikStepThree.values.github_url,
       featured_project: formikStepThree.values.projectDescription,
-      dev_experience: formikStepThree.values.experience,
+      dev_experience: formikStepThree.values.experienceDev,
+      design_experience: formikStepThree.values.desingExperience,
+      data_experience: formikStepThree.values.experienceData,
+     
 
       work_availability: formikStepFour.values.workavailability,
       visa: formikStepFour.values.visa,
       ideal_work_comment: formikStepFour.values.idealWork,
       relocation_option: formikStepFour.values.actualSituation,
-      visa: formikStepFour.values.visa
+      visa: formikStepFour.values.visa,
+      soft_skills: [
+        {
+            "softSkill_id": 3
+        },
+        {
+            "softSkill_id": 4
+        }
+    ]
     }
+    debugger
     workProfile({
       work_profile: data
     }).then((res) => {
@@ -154,6 +172,7 @@ const JobProfile = () => {
       experienceUI:undefined,
       experienceDev:undefined,
       experienceData:undefined,
+
       responsabity:false,
       leader:false,
       flexible: false,
@@ -186,6 +205,7 @@ const JobProfile = () => {
   const handleTxtChange2 = handlerInputChangeCreator(formikStepTwo);
   const handleTxtChange3 = handlerInputChangeCreator(formikStepThree);
   const handleTxtChange4 = handlerInputChangeCreator(formikStepFour);
+
 
   const deleteAutoGenLayout = (id, formik, formState, formStateName) => {
     const filter =  formState.filter(item => item.id !== id);
@@ -263,7 +283,6 @@ const JobProfile = () => {
     }
     getWorkingExperience()
   },[formikStepOne.values.multipleCheck.length])
-console.log(formikStepTwo.values.generatedForm)
 
 
   return (
@@ -348,7 +367,7 @@ console.log(formikStepTwo.values.generatedForm)
                           slice={{start: 0 , end: 1}}
                         />
                         <div className="Education-Form my-5"> 
-                          <h2 className="text-xl ">¿Dónde estudiaste? </h2>
+                          <h2 className="text-xl my-3 ">¿Dónde estudiaste? </h2>
                           <div className={!!formikStepTwo.errors["generatedForm"] ? "min-h-[3rem] my-5 border-2 rounded-md border-error flex justify-center items-center" : "min-h-[3rem]"}>
                             {
                               !!formikStepTwo.errors["generatedForm"] && (
@@ -411,7 +430,7 @@ console.log(formikStepTwo.values.generatedForm)
                           <p className="pt-3">Si crees que estas herramientas no sirven para el cargo que estás buscando, no te preocupes, puedes dejarlo en blanco.</p>
                         </div>
                         <div className="Languajes-Form my-5">
-                          <h2 className="text-xl ">¿Qué lenguajes manejas?</h2>
+                          <h2 className="text-xl my-3 ">¿Qué lenguajes manejas?</h2>
                           <div className={!!formikStepTwo.errors["generatedFormLanguages"] ? "min-h-[3rem] my-5 border-2 rounded-md border-error flex justify-center items-center" : "min-h-[3rem]"}>
                             {
                               !!formikStepTwo.errors["generatedFormLanguages"] && (
@@ -450,7 +469,7 @@ console.log(formikStepTwo.values.generatedForm)
 
                         </div>
                         <div className="DbLibsFrameWorks-Form my-5">
-                          <h2 className="text-xl ">¿Bases de Datos, Librerías y Frameworks ?</h2>
+                          <h2 className="text-xl my-3 ">¿Bases de Datos, Librerías y Frameworks ?</h2>
                           <div className={!!formikStepTwo.errors["generatedFormDbLibsFrameworks"] ? "min-h-[3rem] my-5 border-2 rounded-md border-error flex justify-center items-center" : "min-h-[3rem]"}>
                           {
                               !!formikStepTwo.errors["generatedFormDbLibsFrameworks"] && (
@@ -489,7 +508,7 @@ console.log(formikStepTwo.values.generatedForm)
 
                         </div>
                         <div className="Tools-Form my-5">
-                          <h2 className="text-xl ">¿Otras herramientas?</h2>
+                          <h2 className="text-xl my-3 ">¿Otras herramientas?</h2>
                           <div className={!!formikStepTwo.errors["generatedFormTools"] ? "min-h-[3rem] my-5 border-2 rounded-md border-error flex justify-center items-center" : "min-h-[3rem]"}>
                             {
                               !!formikStepTwo.errors["generatedFormTools"] && (
@@ -565,33 +584,40 @@ console.log(formikStepTwo.values.generatedForm)
                         )
                       }
                     </div>
-                    <ButtonComponent
-                      style={"primary"}
-                      type={"button"}
-                      label={"siguiente"}
-                      onClick={() => {
-                        formSteps.step === 1
-                          ? formikStepOne.handleSubmit()
-                          : formSteps.step === 2
-                          ? formikStepTwo.handleSubmit()
-                          : formSteps.step === 3
-                          ? formikStepThree.handleSubmit()
-                          : formikStepFour.handleSubmit()
-                      }}
-                    ></ButtonComponent>
-                    {
-                      formSteps.step > 1
-                      &&
-                      <ButtonComponent
-                        style={"secondary"}
-                        type={"button"}
-                        label={"atras"}
-                        onClick={() => {
-                          formSteps.step > 1
-                          && setFormSteps({...formSteps, step: formSteps.step - 1})
-                        }}
-                      ></ButtonComponent>
-                    }
+                    <div className="flex flex-col md:flex-row md:gap-3 ">
+                      <div className={formSteps.step === 1 ? 'hidden' :"my-3 md:w-1/2"}>
+                          {
+                            formSteps.step > 1
+                            &&
+                            <ButtonComponent
+                              style={"secondary"}
+                              type={"button"}
+                              label={"atras"}
+                              onClick={() => {
+                                formSteps.step > 1
+                                && setFormSteps({...formSteps, step: formSteps.step - 1})
+                              }}
+                            ></ButtonComponent>
+                          }
+
+                      </div>
+                      <div className={formSteps.step === 1 ? 'my-3 w-full' :"my-3 md:w-1/2"}>
+                        <ButtonComponent
+                          style={"primary"}
+                          type={"button"}
+                          label={"siguiente"}
+                          onClick={() => {
+                            formSteps.step === 1
+                              ? formikStepOne.handleSubmit()
+                              : formSteps.step === 2
+                              ? formikStepTwo.handleSubmit()
+                              : formSteps.step === 3
+                              ? formikStepThree.handleSubmit()
+                              : formikStepFour.handleSubmit()
+                          }}
+                        ></ButtonComponent>
+                      </div>
+                    </div>
                   </form>
                 </FormsCardContainer>
               </div>

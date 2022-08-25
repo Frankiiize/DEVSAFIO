@@ -433,21 +433,21 @@ export const stepFourInputs = [
     id: 'actualSituation',
     name: 'actualSituation',
     label: 'Quiero trabajo desde mi ciudad actual',
-    value: 0
+    value: 'Quiero-trabajo-desde-mi-ciudad-actual'
   },
   {
     type: 'radio',
     id: 'actualSituation1',
     name: 'actualSituation',
     label: 'Estoy disponible a migrar de ciudad dentro de mi país',
-    value: 1
+    value: 'Estoy-disponible-a-migrar-de-ciudad-dentro-de-mi-país'
   },
   {
     type: 'radio',
     id: 'actualSituation2',
     name: 'actualSituation',
     label: 'Estoy disponible para migrar a otro país',
-    value: 2
+    value: 'Estoy-disponible-para-migrar-a-otro-país'
   },
   {
     type: "select",
@@ -1192,43 +1192,36 @@ export const desingExperienceInputs = [
     id: 'experienceUI',
     name: 'experienceUI',
     label: 'sin experiencia',
-    value: 0
+    value: 'sin-experiencia'
   },
   {
     type: 'radio',
     id: 'experienceUI1',
     name: 'experienceUI',
-    label: '1 año',
-    value: 1
+    label: '0 a 1 año',
+    value: '0-a-1-año'
   },
   {
     type: 'radio',
     id: 'experienceUI2',
     name: 'experienceUI',
-    label: '2 años',
-    value: 2
+    label: '1 a 2 años',
+    value: '1-a-2-años'
   },
   {
     type: 'radio',
     id: 'experienceUI3',
     name: 'experienceUI',
-    label: '3 años',
-    value: 3
+    label: '2 a 4 años',
+    value: '2-a-4-años'
   },
   {
     type: 'radio',
     id: 'experienceUI4',
     name: 'experienceUI',
-    label: '4 años',
-    value: 4
-  },
-  {
-    type: 'radio',
-    id: 'experienceUI5',
-    name: 'experienceUI',
-    label: '5 años',
-    value: 5
-  },
+    label: '5 + años',
+    value: '5+-años'
+  }
 ]
 
 export const programingExperienceInputs = [
@@ -1241,43 +1234,37 @@ export const programingExperienceInputs = [
     id: 'experienceDev',
     name: 'experienceDev',
     label: 'sin experiencia',
-    value: 0
+    value: 'sin-experiencia'
   },
   {
     type: 'radio',
     id: 'experienceDev2',
     name: 'experienceDev',
-    label: '1 año',
-    value: 1
+    label: '0 a 1 año',
+    value: '0-a-1-año'
   },
   {
     type: 'radio',
     id: 'experienceDev3',
     name: 'experienceDev',
-    label: '2 años',
-    value: 2
+    label: '1 a 2 años',
+    value: '1-a-2-años'
   },
   {
     type: 'radio',
     id: 'experienceDev4',
     name: 'experienceDev',
-    label: '3 años',
-    value: 3
+    label: '2 a 4 años',
+    value: '2 a 4 años'
   },
   {
     type: 'radio',
     id: 'experienceDev5',
     name: 'experienceDev',
-    label: '4 años',
-    value: 4
+    label: '5 + años',
+    value: '5+-años'
   },
-  {
-    type: 'radio',
-    id: 'experienceDev6',
-    name: 'experienceDev',
-    label: '5 años',
-    value: 5
-  },
+
 ]
 
 export const machineDataScienceInputs = [
@@ -1290,41 +1277,34 @@ export const machineDataScienceInputs = [
     id: 'experienceData',
     name: 'experienceData',
     label: 'sin experiencia',
-    value: 0
+    value: 'sin-experiencia'
   },
   {
     type: 'radio',
     id: 'experienceData1',
     name: 'experienceData',
-    label: '1 año',
-    value: 1
+    label: '0 a 1 año',
+    value: '0-a-1-año'
   },
   {
     type: 'radio',
     id: 'experienceData2',
     name: 'experienceData',
-    label: '2 años',
-    value: 2
+    label: '1 a 2 años',
+    value: '1-a-2-años'
   },
   {
     type: 'radio',
     id: 'experienceData3',
     name: 'experienceData',
-    label: '3 años',
-    value: 3
+    label: '2 a 4 años',
+    value: '2-a-4-años'
   },
   {
     type: 'radio',
     id: 'experienceData4',
     name: 'experienceData',
-    label: '4 años',
-    value: 4
-  },
-  {
-    type: 'radio',
-    id: 'experienceData5',
-    name: 'experienceData',
-    label: '5 años',
-    value: 5
-  },
+    label: '5 + años',
+    value: '5+-años'
+  }
 ]
