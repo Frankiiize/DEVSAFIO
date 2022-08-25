@@ -97,7 +97,6 @@ const JobProfile = () => {
         }
     ]
     }
-    debugger
     workProfile({
       work_profile: data
     }).then((res) => {
@@ -231,7 +230,6 @@ const JobProfile = () => {
           return sumWithInitial
         }
         const id = getMaxId(formState).id + 1
-        console.log(getMaxId(formState))
         newInput.push({id: id, inputs: input, formValues: initialFormValues(formStateName)})
         formik.setValues({...formik.values, [formStateName]: newInput})
       }

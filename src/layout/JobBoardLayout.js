@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import JobBoard from "../components/jobBoard/JobBoard.js";
 
-//console.log(data)
 
 function JobBoardLayout() {
   const [jobs, setJobs] = useState([])
@@ -28,7 +27,6 @@ function JobBoardLayout() {
     getData()
   }, []);
 
-  console.log(jobs)
 
   const handleTagClick = (tag) => {
     // avoid reading the tag

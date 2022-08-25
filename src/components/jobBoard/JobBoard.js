@@ -6,7 +6,6 @@ import moment from "moment"
 const JobBoard = (
   props
 ) => {
-  console.log(props)
 
 
 
