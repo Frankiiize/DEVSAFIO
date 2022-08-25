@@ -34,7 +34,7 @@ const RegisterPage = () => {
       
       .then(() => {
         setFormLoading(false)
-        navigate("../postulate", { replace: true, state: res });
+        navigate("../dashboard", { replace: true, state: res });
       })
       .catch((err) => {
         setFormLoading(false);

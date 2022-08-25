@@ -38,7 +38,7 @@ const inputConfig = [
 ]
 */
 
-const InputComponent = ({ type, dataset, checkValue, radioValue, id, placeholder, name, label, formik, onChange, options, titleHead = { show: false, title: undefined } }) => {
+const InputComponent = ({ type, formGrup, indexPrincipal, dataset, checkValue, radioValue, id, placeholder, name, label, formik, onChange, options, titleHead = { show: false, title: undefined } },  ) => {
   const checkRadioLayout = ["flex items-center mb-2 justify-start "];
   const checkInputClass = ["order-1 m-0 checkbox checkbox-primary checkbox-sm border border-gray-300 bg-white checked:border-accent focus:outline-none transition duration-200  bg-no-repeat bg-center bg-contain  cursor-pointer mr-2"];
   const radioInputClass = ["order- 1 m-0 radio radio-primary radio-sm mr-2 border border-gray-300 bg-white checked:border-accent focus:outline-none transition duration-300  bg-no-repeat bg-center bg-contain  cursor-pointer mr-2 "];
@@ -47,6 +47,7 @@ const InputComponent = ({ type, dataset, checkValue, radioValue, id, placeholder
   const showUiFileInput = () => {
     inputRef.current.click();
   }
+  
   return (
     <>
       {titleHead.show ? <h1 className="pt-5 pb-2 text-2xl">{titleHead.title}</h1> : null}
@@ -64,6 +65,8 @@ const InputComponent = ({ type, dataset, checkValue, radioValue, id, placeholder
             onChange={onChange}
             options={options}
             dataset={dataset}
+            formGrup={formGrup}
+            indexPrincipal={indexPrincipal}
           /> :
             <>  <label
               htmlFor={id}
@@ -81,7 +84,7 @@ const InputComponent = ({ type, dataset, checkValue, radioValue, id, placeholder
                         ? <span className="mr-10 text-base">Archivo cargado</span>
                         : <span className="mr-10 text-base"> sube un archivo </span>
                     }
-                    <ButtonComponent type={"button"} onClick={showUiFileInput} style={null}>
+                    <ButtonComponent type={"button"} label={''} onClick={showUiFileInput} style={null}>
                       {
                         typeof formik.values?.[name] === 'object'
                           ? <BsCheck2Circle size={32} color={"#FFD24C"} />
@@ -109,13 +112,23 @@ const InputComponent = ({ type, dataset, checkValue, radioValue, id, placeholder
                 name={name}
                 id={id}
                 onChange={onChange}
-                value={type === "radio" ? radioValue : type === "file" ? undefined : type === 'checkbox' ? checkValue : formik.values[name]}
+                checked={(type === 'checkbox' || type === 'radio' && formik.values[name] === radioValue ) && !!formik.values[name]  ? true : false} 
+                value={type === "radio" ? radioValue : type === "file" ? undefined : type === 'checkbox' ? checkValue  : formGrup ? formik.values[dataset][indexPrincipal].formValues[name] : formik.values[name]}
               />
             </>
         }
 
 
       </div>
+      {
+       (formGrup && formik.errors[`${dataset}[${[indexPrincipal]}].formValues.${name}`]) &&
+        ( 
+          <div className="mb-2">
+            <span className="text-error">{formik.errors[`${dataset}[${[indexPrincipal]}].formValues.${name}`]}</span>
+          </div>
+        )
+
+      }
       {
       formik.touched[name] && !!formik.errors[name] && (
         <div className="mb-2">
