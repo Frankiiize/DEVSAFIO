@@ -116,7 +116,6 @@ const JobProfile = () => {
       formik.values.Data === true ||
       formik.values.Other === true
     ) {
-      console.log(values);
     } else {
       setCheck(true);
     }

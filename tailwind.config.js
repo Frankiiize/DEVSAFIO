@@ -7,7 +7,9 @@ module.exports = {
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+     
     },
+  
     extend: {},
   },
   daisyui: {
@@ -20,6 +22,8 @@ module.exports = {
           "secondary": "#646FD4",
 
           "accent": "#FFD24C",
+          
+          "accent-content": "#fff",
 
           "neutral": "#3D4451",
 
@@ -30,6 +34,7 @@ module.exports = {
           "success": "#36D399",
 
           "warning": "#FBBD23",
+          
 
           "error": "#F87272",
         },

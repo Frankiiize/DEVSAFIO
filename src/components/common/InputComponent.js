@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { BsCameraFill, BsCheck2Circle } from 'react-icons/bs'
 import { ButtonComponent } from "./ButtonComponent";
+import { SelectComponent } from "./SelectComponent";
 /* 
 USO: el componente recibe props 
 1)type = tipo de input
@@ -32,12 +33,12 @@ const inputConfig = [
     id: 'radio',
     name: 'todos los radio grup deben de tener el mismo name',
     label: 'radio label',
-    value: 'debes enviar el valor del radio para que este sea capturado por formik'
+    value: 'debes enviar el valor del radio para que este sea capturado por formik || tienes que pasarle el radioValue por props ( item.value) '
   },
 ]
 */
 
-const InputComponent = ({ type, radioValue, id, placeholder, name, label, formik, onChange, titleHead = { show: false, title: undefined } }) => {
+const InputComponent = ({ type, formGrup, indexPrincipal, dataset, checkValue, radioValue, id, placeholder, name, label, formik, onChange, options, titleHead = { show: false, title: undefined } },  ) => {
   const checkRadioLayout = ["flex items-center mb-2 justify-start "];
   const checkInputClass = ["order-1 m-0 checkbox checkbox-primary checkbox-sm border border-gray-300 bg-white checked:border-accent focus:outline-none transition duration-200  bg-no-repeat bg-center bg-contain  cursor-pointer mr-2"];
   const radioInputClass = ["order- 1 m-0 radio radio-primary radio-sm mr-2 border border-gray-300 bg-white checked:border-accent focus:outline-none transition duration-300  bg-no-repeat bg-center bg-contain  cursor-pointer mr-2 "];
@@ -46,65 +47,102 @@ const InputComponent = ({ type, radioValue, id, placeholder, name, label, formik
   const showUiFileInput = () => {
     inputRef.current.click();
   }
+  
   return (
     <>
-      {titleHead.show ? <h1 className="py-5">{titleHead.title}</h1> : null}
+      {titleHead.show ? <h1 className="pt-5 pb-2 text-2xl">{titleHead.title}</h1> : null}
       <div
         className={
-          (type === "checkbox" || type === 'radio')  ? checkRadioLayout : type === 'file' ? 'mb-0' : "mb-2 "
+          (type === "checkbox" || type === 'radio') ? checkRadioLayout : type === 'file' ? 'mb-0' : "mb-2 "
         }
       >
-        <label 
-          htmlFor={id} 
-          className={
-            (type === "checkbox" || type === 'radio' || type === 'file') 
-              ? 'label capitalize px-0 order-2'
-              :"label capitalize px-0"}>
-          {
-            type !== 'file' 
-            ?<span className="label-text text-base">{label}</span>
-            : 
-              <div className="flex items-center ">
-                {
-                 typeof formik.values?.[name] === 'object'  
-                  ? <span className="mr-10 text-base">Archivo cargado</span>
-                  : <span className="mr-10 text-base"> sube un archivo </span>
+        {
+          type === "select" ? <SelectComponent
+            label={label}
+            name={name}
+            id={id}
+            formik={formik}
+            onChange={onChange}
+            options={options}
+            dataset={dataset}
+            formGrup={formGrup}
+            indexPrincipal={indexPrincipal}
+          /> :
+            <>  <label
+              htmlFor={id}
+              className={
+                (type === "checkbox" || type === 'radio' || type === 'file')
+                  ? 'label capitalize  px-0 order-2'
+                  : "label capitalize px-0"}>
+              {
+                type !== 'file'
+                  ? <span className="label-text text-lg">{label}</span>
+                  :
+                  <div className="flex items-center ">
+                    {
+                      typeof formik.values?.[name] === 'object'
+                        ? <span className="mr-10 text-base">Archivo cargado</span>
+                        : <span className="mr-10 text-base"> sube un archivo </span>
+                    }
+                    <ButtonComponent type={"button"} label={''} onClick={showUiFileInput} style={null}>
+                      {
+                        typeof formik.values?.[name] === 'object'
+                          ? <BsCheck2Circle size={32} color={"#FFD24C"} />
+                          : <BsCameraFill size={32} color={"#646FD4"} />
+                      }
+
+                    </ButtonComponent>
+                  </div>
+              }
+            </label>
+              <input
+                type={type}
+                ref={inputRef}
+                placeholder={placeholder}
+                className={
+                  type === "checkbox"
+                    ? checkInputClass
+                    : type === "radio"
+                      ? radioInputClass
+                      : type === 'file'
+                        ? 'hidden'
+                        : inputDefaultClass
                 }
-                <ButtonComponent type={"button"} onClick={showUiFileInput} style={null}>
-                {
-                 typeof formik.values?.[name] === 'object'  
-                  ? <BsCheck2Circle size={32} color={"#FFD24C"} />
-                  : <BsCameraFill size={32} color={"#646FD4"}/>
-                }
-                  
-                </ButtonComponent>
-              </div>
-          }
-        </label>
-        <input
-          type={type}
-          ref={inputRef}
-          placeholder={placeholder}
-          className={
-            type === "checkbox" 
-            ? checkInputClass
-            : type === "radio"
-            ? radioInputClass
-            : type === 'file'
-            ? 'hidden'
-            : inputDefaultClass
-          }
-          name={name}
-          id={id}
-          onChange={onChange}
-          value={type === "radio" ? radioValue : type === "file" ? undefined : formik.values[name]}
-        />
+                dataset={dataset}
+                name={name}
+                id={id}
+                onChange={onChange}
+                checked={(type === 'checkbox' || type === 'radio' && formik.values[name] === radioValue ) && !!formik.values[name]  ? true : false} 
+                value={type === "radio" ? radioValue : type === "file" ? undefined : type === 'checkbox' ? checkValue  : formGrup ? formik.values[dataset][indexPrincipal].formValues[name] : formik.values[name]}
+              />
+            </>
+        }
+
+
       </div>
-      {formik.touched[name] && !!formik.errors[name] && (
+      {
+       (formGrup && formik.errors[`${dataset}[${[indexPrincipal]}].formValues.${name}`]) &&
+        ( 
+          <div className="mb-2">
+            <span className="text-error">{formik.errors[`${dataset}[${[indexPrincipal]}].formValues.${name}`]}</span>
+          </div>
+        )
+
+      }
+      {
+      formik.touched[name] && !!formik.errors[name] && (
         <div className="mb-2">
           <span className="text-error">{formik.errors[name]}</span>
         </div>
-      )}
+      )
+      }
+      {
+        dataset === 'multipleCheck' && (
+          <div className="mb-2">
+            <span className="text-error">{formik.errors.multipleCheck}</span>
+          </div>
+        )
+      }
     </>
   );
 }

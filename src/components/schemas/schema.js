@@ -1,6 +1,4 @@
-import { yupToFormErrors } from "formik";
 import * as Yup from "yup";
-const ACEPTED_PHOTOS = ['image/jpg','image/jpeg','image/png'];
 
 let basicSchema = Yup.object().shape({
   name: Yup.string()
@@ -24,13 +22,16 @@ let register = basicSchema.shape({
     .required('Confirma la contraseña'),
 });
 
-let jopSchema = basicSchema.shape({
+let jopSchema = Yup.object().shape({
   number: Yup.string()
     .required('debes de ingresar tu numero telefonico'),
   city: Yup.string()
     .required('ingresa tu ciudad'),
   country: Yup.string()
     .required('ingresa tu pais'),
+  gender: Yup.string()
+    .required('ingresa tu genero'),
+  multipleCheck: Yup.array().min(1, 'debes seleccionar una casilla')
 })
 
 let login = Yup.object().shape({
@@ -43,6 +44,66 @@ let login = Yup.object().shape({
     .required("Contraseña es requeridad"),
 });
 
+let postulate = Yup.object().shape({
+  maxEducationLevel: Yup.string()
+    .required("Selecciona tu nivel de educacion"),
+  actualEducationSituation: Yup.string()
+    .required("Selecciona tu situación educativa actual"),
+  englishLevel: Yup.string()
+    .required("Selecciona tu nivel de ingles"),
+  otherTec: Yup.string(),
+  generatedForm: Yup.array().of(
+    Yup.object().shape({
+      formValues : Yup.object().shape({
+        institucion: Yup.string().required('Escribe el nombre de la institución'),
+        educacion: Yup.string().required('Selecciona una opción'),
+        area: Yup.string().required('Selecciona una opción'),
+        certificado: Yup.string().required('¿Que certificado obtuviste?'),
+        anoGraduacion:  Yup.string().required('¿En que fecha obtuviste el certificado?')
+      })
+    })
+  ).min(1, 'Completa estos datos'),
+  generatedFormLanguages: Yup.array().of(
+    Yup.object().shape({
+      formValues : Yup.object().shape({
+        programingLanguajes: Yup.number().integer().required('Selecciona una opción'),
+        level: Yup.number().integer().required('Selecciona una opción'),
+      })
+    })
+  ).min(1, 'Completa estos datos'),
+  generatedFormDbLibsFrameworks: Yup.array().of(
+    Yup.object().shape({
+      formValues : Yup.object().shape({
+        dbLibsFrameworks: Yup.string().required('Selecciona una opción'),
+        level: Yup.number().integer().required('Selecciona una opción'),
+      })
+    })
+  ).min(1, 'Completa estos datos'),
+  generatedFormTools: Yup.array().of(
+    Yup.object().shape({
+      formValues : Yup.object().shape({
+        tools:  Yup.number().integer().required('Selecciona una opción'),
+        level: Yup.number().integer().required('Selecciona una opción'),
+      })
+    })
+  ).min(1, 'Completa estos datos'),
+  
+  otherTec : Yup.string()
+});
+
+let postulate2 = Yup.object().shape({
+  cvUrl: Yup.string()
+    .required("Se recomienda subir como documento público en Google Drive o similar"),
+  urlLinkedin: Yup.string()
+    .required("Ingresa la url de tu perfil"),
+  urlPortafolio: Yup.string()
+    .required("Ingresa la url de tu portafolio"),
+  projectDescription: Yup.string()
+    .required("Comentanos algún proyecto que hayas realizado"),
+  
+})
+
+
 export const registerSchema = () => {
   return register;
 }
@@ -53,3 +114,11 @@ export const jopProfileShema = () => {
 export const loginSchema = () => {
   return login;
 }
+export const postulateSchema = () => {
+  return postulate;
+}
+export const postulateSchema2 = () => {
+  return postulate2;
+}
+
+

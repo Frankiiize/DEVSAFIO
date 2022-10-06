@@ -1,0 +1,42 @@
+export const inputConfig = [
+  {
+    type: 'text',
+    id: 'name',
+    placeholder: 'tu nombre',
+    name: 'name',
+    label: 'nombre',
+    autoComplete: 'given-name',
+  },
+  {
+    type: 'text',
+    id: 'lastName',
+    placeholder: 'tu apellido',
+    name: 'lastName',
+    label: 'Apellido',
+    autoComplete: 'family-name',
+  },
+  {
+    type: 'email',
+    id: 'email',
+    placeholder: 'email@gmail.com',
+    name: 'email',
+    label: 'email',
+    autoComplete: 'email',
+  },
+  {
+    type: 'password',
+    id: 'password',
+    placeholder: 'contraseña',
+    name: 'password',
+    label: 'contraseña',
+    autoComplete: 'password',
+  },
+  {
+    type: 'password',
+    id: 'c_password',
+    placeholder: 'confirma la contraseña',
+    name: 'c_password',
+    label: 'confirma',
+    autoComplete: 'off',
+  },
+]
